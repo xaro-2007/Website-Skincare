@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Giỏ hàng - Julie Skin</title>
+
+    <!-- File CSS của trang giỏ hàng -->
+    <link rel="stylesheet" href="../CSS/giohang.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="trangchu.html" class="logo"> JULIE SKIN </a>
+
+        <nav class="navbar">
+            <a href="trangchu.html">Trang chủ</a>|
+            <a href="sanpham.html">Sản phẩm</a>|
+            <a href="vechungtoi.html">Về chúng tôi</a>|
+            <a href="lienhe.html">Liên hệ</a>|
+            <a href="giohang.html" class="active">Giỏ hàng (<span id="cart-count">0</span>) </a>
+        </nav>
+    </header>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <main class="container">
+
+        <h1>Giỏ hàng của bạn</h1>
+
+        <p class="description">
+            Kiểm tra sản phẩm và thông tin đơn hàng của bạn.
+        </p>
+
+        <div class="cart-layout">
+
+            <!-- DANH SÁCH SẢN PHẨM -->
+            <section class="cart-products">
+
+                <h2>Sản phẩm đã chọn</h2>
+
+                <!-- JavaScript sẽ hiển thị sản phẩm tại đây -->
+                <div id="cart-items"></div>
+
+            </section>
+
+            <!-- TỔNG KẾT ĐƠN HÀNG -->
+            <aside class="cart-summary">
+
+                <h2>Tóm tắt đơn hàng</h2>
+
+                <div class="summary-row">
+                    <span>Tạm tính</span>
+                    <span id="subtotal">0 ₫</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Phí vận chuyển</span>
+                    <span id="shipping">30.000 ₫</span>
+                </div>
+
+                <hr>
+
+                <div class="summary-row total">
+                    <span>Tổng cộng</span>
+                    <span id="total">0 ₫</span>
+                </div>
+
+                <button id="checkout-btn" class="checkout-btn">
+                    Tiến hành đặt hàng
+                </button>
+
+                <a href="sanpham.html" class="continue-shopping">
+                    ← Tiếp tục mua sắm
+                </a>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 Julie Skin. Chăm sóc làn da của bạn.</p>
+    </footer>
+
+    <!-- File JavaScript -->
+    <script src="../JS/giohang.js"></script>
+
+</body>
+</html>
