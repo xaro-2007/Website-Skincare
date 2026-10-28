@@ -1,4 +1,3 @@
-// Hàm mở popup chung
 function moModal(id) {
     document.getElementById(id).style.display = 'flex';
 }
@@ -23,6 +22,8 @@ function dangKy() {
     }
 
     localStorage.setItem("tenNguoiDung", ten);
+    localStorage.setItem("taikhoan", tk);
+    localStorage.setItem("matkhau", mk);
     
     dongModal('registerModal');
     hienThiTrangChinh(ten);
