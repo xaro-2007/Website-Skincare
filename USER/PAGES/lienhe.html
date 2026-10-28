@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - JULIE SKIN</title>
+    <link rel="stylesheet" href="../CSS/lienhe.css">
+    <script src="../JS/lienhe.js"></script>
+</head>
+<body>
+
+    <!-- Thanh dieu huong -->
+    <header class="header">
+        <a href="trangchu.html" class="logo">JULIE SKIN</a>
+
+        <nav>
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html" class="active">Liên hệ</a>
+            <a href="giohang.html">Giỏ hàng</a>
+        </nav>
+
+        <div class="account">
+            <a href="dangnhap.html">Đăng nhập</a>
+            <a href="dangky.html">Đăng ký</a>
+        </div>
+    </header>
+
+    <!-- Tieu de -->
+    <section class="banner">
+        <h1>Liên hệ với chúng tôi</h1>
+        <p>JULIE SKIN luôn sẵn sàng lắng nghe và hỗ trợ bạn.</p>
+    </section>
+
+    <!-- Noi dung lien he -->
+    <main class="container">
+
+        <section class="contact-info">
+            <h2>Thông tin liên hệ</h2>
+
+            <p><strong>Email:</strong> julieskin@example.com</p>
+            <p><strong>Điện thoại:</strong> 0123 456 789</p>
+            <p><strong>Địa chỉ:</strong> Quảng Ngãi,Quảng Bình,Quảng Trị,Bình Định</p>
+            <p><strong>Thời gian:</strong> Thứ 2 - Thứ 7, 8:00 - 17:00</p>
+        </section>
+
+        <section class="contact-form">
+            <h2>Gửi tin nhắn</h2>
+
+            <form id="contactForm">
+                <label for="name">Họ và tên *</label>
+                <input type="text" id="name" required
+                    placeholder="Nhập họ và tên">
+
+                <label for="email">Email *</label>
+                <input type="email" id="email" required
+                    placeholder="Nhập email">
+
+                <label for="subject">Chủ đề *</label>
+                <select id="subject" required>
+                    <option value="">-- Chọn chủ đề --</option>
+                    <option value="Tư vấn sản phẩm">Tư vấn sản phẩm</option>
+                    <option value="Đơn hàng">Đơn hàng</option>
+                    <option value="Góp ý">Góp ý</option>
+                    <option value="Khác">Khác</option>
+                </select>
+
+                <label for="message">Nội dung *</label>
+                <textarea id="message" rows="5" required
+                        placeholder="Nhập nội dung cần hỗ trợ"></textarea>
+
+                <button type="submit">Gửi tin nhắn</button>
+                <p id="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Chan trang -->
+    <footer>
+        <h3>JULIE SKIN</h3>
+        <p>Chăm sóc làn da - Nâng niu vẻ đẹp của bạn.</p>
+        <p>© 2026 JULIE SKIN</p>
+    </footer>
+
+    <script src="../JS/lienhe.js"></script>
+</body>
+</html>
+```
