@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập & Đăng ký</title>
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
+</head>
+<body>
+
+    <div id="authButtons">
+        <button onclick="moModal('loginModal')">Đăng nhập</button>
+        <button onclick="moModal('registerModal')">Đăng ký</button>
+    </div>
+
+    <div id="userDashboard">
+        <span>Xin chào, <span id="tenHienThi"></span>!</span>
+        <button onclick="dangXuat()">Đăng xuất</button>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng nhập</h3>
+            <input type="text" id="logUser" placeholder="Tài khoản">
+            <input type="password" id="logPass" placeholder="Mật khẩu">
+            <br><br>
+            <button onclick="dangNhap()">Đăng nhập</button>
+            <button onclick="dongModal('loginModal')">Hủy</button>
+            
+            <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng ký</h3>
+            <input type="text" id="regName" placeholder="Họ và tên">
+            <input type="text" id="regUser" placeholder="Tài khoản">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <br><br>
+            <button onclick="dangKy()">Đăng ký</button>
+            <button onclick="dongModal('registerModal')">Hủy</button>
+            
+            <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+        </div>
+    </div>
+
+    <script src="../JS/dangnhap.js"></script>
+</body>
+</html>
