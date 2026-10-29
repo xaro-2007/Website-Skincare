@@ -71,6 +71,13 @@ img {
     font-weight: normal;
 }
 
+.main-logo {           
+    width: 55px;       
+    height: 55px;      
+    margin-right: 8px; 
+    border-radius: 50%;
+}                      
+
 .navbar {
     display: flex;
     align-items: center;
@@ -88,6 +95,21 @@ img {
     color: #c95778;
 }
 
+.header-right {               
+    display: flex;            
+    align-items: center;      
+}                             
+.header-right a {             
+    margin-left: 8px;         
+    padding: 9px 12px;        
+    border: 1px solid #ff7699;
+    border-radius: 20px;      
+    color: #ff7699;           
+}                             
+.header-right .gio-hang {     
+    color: white;             
+    background-color: #ff7699;
+}                             
 
 /* =========================
    3. BANNER
