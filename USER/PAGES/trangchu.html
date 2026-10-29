@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jinie Skin</title>
     <link rel="stylesheet" href="../CSS/trangchu.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
 </head>
 <body>
     <header>
@@ -17,7 +18,41 @@
         </nav>
 
         <div class="header-right">
-            <a href="dangnhap.html">Đăng nhập</a>
+            <div id="authButtons">
+        <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+    </div>
+
+    <div id="userDashboard">
+        <span>Xin chào, <span id="tenHienThi"></span>!</span>
+        <button onclick="dangXuat()">Đăng xuất</button>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng nhập</h3>
+            <input type="text" id="logUser" placeholder="Tài khoản">
+            <input type="password" id="logPass" placeholder="Mật khẩu">
+            <br><br>
+            <button onclick="dangNhap()">Đăng nhập</button>
+            <button onclick="dongModal('loginModal')">Hủy</button>
+            
+            <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng ký</h3>
+            <input type="text" id="regName" placeholder="Họ và tên">
+            <input type="text" id="regUser" placeholder="Tài khoản">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <br><br>
+            <button onclick="dangKy()">Đăng ký</button>
+            <button onclick="dongModal('registerModal')">Hủy</button>
+            
+            <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+        </div>
+    </div>
             <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
             <button id="nutMenu">☰</button>
         </div>
@@ -85,5 +120,6 @@
     </footer>
 
     <script src="../JS/trangchu.js"></script>
+    <script src="../JS/dangnhap.js"></script>
 </body>
 </html>
