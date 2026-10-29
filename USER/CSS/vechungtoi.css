@@ -52,6 +52,13 @@ img {
     color: #888;
 }
 
+.main-logo {           
+    width: 55px;       
+    height: 55px;      
+    margin-right: 8px; 
+    border-radius: 50%;
+}                      
+
 .navbar {
     display: flex;
     align-items: center;

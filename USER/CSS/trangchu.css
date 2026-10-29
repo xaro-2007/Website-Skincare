@@ -20,19 +20,33 @@ header {
     background-color: white;
     border-bottom: 1px solid #eeeeee;
 }
+
 .logo {
     display: flex;
-    align-items: center;
-    font-size: 24px;
-    color: #ff7699;
+    align-items: center; 
+    gap: 12px;          
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: bold;
 }
-.logo img {
+
+.main-logo {
     width: 55px;
     height: 55px;
-    margin-right: 8px;
     border-radius: 50%;
+    object-fit: cover;
 }
-.logo b {
+
+
+.brand-text {
+    font-weight: bold;
+}
+
+.text-jinie {
+    color: #ff7699;
+}
+
+.text-skin {
     color: #333333;
 }
 
