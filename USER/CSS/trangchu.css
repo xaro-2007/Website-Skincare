@@ -26,22 +26,12 @@ header {
     font-size: 24px;
     color: #ff7699;
 }
-<<<<<<< HEAD
 .main-logo {
-=======
-.logo img {
->>>>>>> ce38361d895ba859e8d39dd8556485ce7bfb9afe
     width: 55px;
     height: 55px;
     margin-right: 8px;
     border-radius: 50%;
 }
-<<<<<<< HEAD
-=======
-.logo b {
-    color: #333333;
-}
->>>>>>> ce38361d895ba859e8d39dd8556485ce7bfb9afe
 
 nav {
     display: flex;
