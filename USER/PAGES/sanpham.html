@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sản phẩm - Julie Skin</title>
+
+    <link rel="stylesheet" href="../CSS/sanpham.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="trangchu.html" class="logo">
+            <span class="logo-icon">✿</span>
+            <span>
+                JULIE SKIN
+                <small>Đẹp hơn mỗi ngày</small>
+            </span>
+        </a>
+
+        <nav class="navbar">
+            <a href="trangchu.html">Trang chủ</a>|
+            <a href="sanpham.html" class="active">Sản phẩm</a>|
+            <a href="vechungtoi.html">Về chúng tôi</a>|
+            <a href="lienhe.html">Liên hệ</a>|
+            <a href="giohang.html" class="cart-link"> Giỏ hàng (<span id="cart-count">0</span>) </a>
+        </nav>
+    </header>
+
+    <!-- BANNER -->
+    <section class="product-banner">
+        <div>
+            <p class="banner-label">JULIE SKIN - BEAUTY STORE</p>
+            <h1>Khám phá sản phẩm</h1>
+            <p> Chăm sóc làn da mỗi ngày, tự tin tỏa sáng theo cách của bạn.</p>
+        </div>
+    </section>
+
+    <!-- KHU VỰC SẢN PHẨM -->
+    <main class="container">
+
+        <div class="section-heading">
+            <p class="section-label">BỘ SƯU TẬP CỦA CHÚNG TÔI</p>
+            <h2>Sản phẩm mỹ phẩm</h2>
+            <p>Lựa chọn sản phẩm phù hợp với nhu cầu chăm sóc da của bạn.</p>
+        </div>
+
+        <!-- TÌM KIẾM VÀ LỌC -->
+        <section class="filter-section">
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Tìm kiếm sản phẩm..."
+                    aria-label="Tìm kiếm sản phẩm"
+                >
+
+                <button type="button" id="search-btn"> Tìm kiếm </button>
+            </div>
+
+            <div class="filter-controls">
+
+                <select id="category-filter" aria-label="Lọc danh mục">
+                    <option value="all">Tất cả danh mục</option>
+                    <option value="cleanser">Sữa rửa mặt</option>
+                    <option value="toner">Toner</option>
+                    <option value="serum">Serum</option>
+                    <option value="moisturizer">Kem dưỡng</option>
+                </select>
+
+                <select id="sort-price" aria-label="Sắp xếp giá">
+                    <option value="default">Sắp xếp mặc định</option>
+                    <option value="asc">Giá: Thấp đến cao</option>
+                    <option value="desc">Giá: Cao đến thấp</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- THÔNG TIN SỐ LƯỢNG -->
+        <div class="product-count">
+            Tìm thấy <strong id="result-count">0</strong> sản phẩm
+        </div>
+
+        <!-- JAVASCRIPT SẼ HIỂN THỊ SẢN PHẨM TẠI ĐÂY -->
+        <section id="product-list" class="product-grid"></section>
+
+        <!-- NẾU KHÔNG CÓ SẢN PHẨM -->
+        <div id="no-products" class="no-products" hidden>
+            <h3>Không tìm thấy sản phẩm!</h3>
+            <p>Hãy thử tên sản phẩm hoặc danh mục khác.</p>
+            <button type="button" id="reset-filter">
+                Xem tất cả sản phẩm
+            </button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a href="trangchu.html" class="footer-logo">
+            JULIE SKIN
+        </a>
+
+        <p>Chăm sóc làn da, yêu thương bản thân.</p>
+
+        <p class="copyright">
+            © 2026 Julie Skin. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- FILE JAVASCRIPT -->
+    <script src="../JS/sanpham.js"></script>
+
+</body>
+</html>

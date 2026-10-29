@@ -1,0 +1,251 @@
+/* Liên hệ của Linh */
+
+
+/* ===== CAI DAT CHUNG ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #27364A;
+    background: #FFF8FA;
+    line-height: 1.6;
+}
+
+/* ===== THANH MENU ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 4%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(39, 54, 74, 0.06);
+}
+
+.logo {
+    color: #FF6680;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+nav, .account {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: #555;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+nav a:hover, nav .active {
+    color: #FF6680;
+}
+
+.account a {
+    padding: 10px 15px;
+    border-radius: 22px;
+    background: #F3A2B5;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.account a:last-child {
+    background: #AAA;
+}
+
+/* ===== PHAN GIOI THIEU ===== */
+.banner {
+    padding: 65px 20px;
+    text-align: center;
+    background: #FFF0F4;
+}
+
+.banner h1 {
+    margin: 0 0 12px;
+    color: #27364A;
+    font-size: 38px;
+}
+
+.banner p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Duong vien trang tri */
+.banner h1::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 4px;
+    margin: 15px auto 0;
+    border-radius: 5px;
+    background: #FF6680;
+}
+
+/* ===== NOI DUNG LIEN HE ===== */
+.container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.contact-info, .contact-form {
+    padding: 30px;
+    border: 1px solid #F9E4E9;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 8px 25px rgba(39, 54, 74, 0.05);
+}
+
+.contact-info h2, .contact-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #27364A;
+    font-size: 23px;
+}
+
+/* Thong tin lien he */
+.contact-info p {
+    margin: 18px 0;
+    color: #666;
+    overflow-wrap: anywhere;
+}
+
+.contact-info strong {
+    color: #D95776;
+}
+
+/* ===== FORM LIEN HE ===== */
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #27364A;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E8DDE0;
+    border-radius: 8px;
+    background: #FFFCFD;
+    color: #333;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #FF6680;
+    box-shadow: 0 0 0 3px rgba(255, 102, 128, 0.12);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Nut gui */
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: #FF6680;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #E94F70;
+    transform: translateY(-2px);
+}
+
+/* Thong bao */
+#status {
+    color: #27834A;
+    font-size: 14px;
+}
+
+/* ===== CHAN TRANG ===== */
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: #FFF0F4;
+    color: #666;
+}
+
+footer h3 {
+    margin-top: 0;
+    color: #FF6680;
+    font-size: 23px;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* ===== MAY TINH BANG ===== */
+@media (max-width: 1000px) {
+    .header {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .container {
+        gap: 20px;
+    }
+}
+
+/* ===== DIEN THOAI ===== */
+@media (max-width: 700px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    nav, .account {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .contact-info, .contact-form {
+        padding: 22px;
+    }
+
+    .banner {
+        padding: 45px 18px;
+    }
+
+    .banner h1 {
+        font-size: 29px;
+    }
+}
