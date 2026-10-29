@@ -388,8 +388,7 @@ function checkout() {
         "Khách hàng: " + name.trim() + "\n" +
         "Số điện thoại: " + phone.trim() + "\n" +
         "Địa chỉ: " + address.trim() + "\n" +
-        "Tổng thanh toán: " + formatMoney(total) + "\n\n" +
-        "Đây là bản demo. Đơn hàng chưa được lưu vào hệ thống."
+        "Tổng thanh toán: " + formatMoney(total) + "\n\n" 
     );
 }
 

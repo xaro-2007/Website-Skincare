@@ -9,25 +9,35 @@
 </head>
 <body>
     <header>
-        <img class="main-logo" src="../img/logo.png" alt="Jinie"><span><b>Jinie</b></span><b>Skin</b>
+    <!-- Sửa lại phần Logo có thẻ a bọc ngoài, gom hình và chữ lại với nhau -->
+    <a href="trangchu.html" class="logo">
+        <img class="main-logo" src="../img/logo.png" alt="Jinie">
+        <span class="brand-text">
+            <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+        </span>
+    </a>
 
-        <nav id="menu">
-            <a class="chon" href="trangchu.html">Trang chủ</a>
-            <a href="sanpham.html">Sản phẩm</a>
-            <a href="lienhe.html">Liên hệ</a>
-        </nav>
+    <nav id="menu">
+        <!-- Các menu giữ nguyên -->
+        <a class="chon" href="trangchu.html">Trang chủ</a>
+        <a href="sanpham.html">Sản phẩm</a>
+        <a href="vechungtoi.html"> Về chúng tôi</a>
+        <a href="lienhe.html">Liên hệ</a>
+        <a href="giohang.html">Giỏ hàng</a>
+    </nav>
+    
+    <!-- Phần bên phải header (Đăng nhập / Giỏ hàng) -->
+    <div class="header-right">
+        <div id="authButtons">
+            <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+        </div>
 
-        <div class="header-right">
-             <div id="authButtons">
-        <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
-    </div>
+        <div id="userDashboard" style="display: none;">
+            <span>Xin chào, <span id="tenHienThi"></span>!</span>
+            <button onclick="dangXuat()">Đăng xuất</button>
+        </div>
 
-    <div id="userDashboard">
-        <span>Xin chào, <span id="tenHienThi"></span>!</span>
-        <button onclick="dangXuat()">Đăng xuất</button>
-    </div>
-
-    <div id="loginModal" class="modal">
+<div id="loginModal" class="modal">
         <div class="modal-content">
             <h3>Đăng nhập</h3>
             <input type="text" id="logUser" placeholder="Tài khoản">
@@ -54,11 +64,12 @@
         </div>
     </div>
 
-    <script src="../JS/dangnhap.js"></script>
-            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
-            <button id="nutMenu">☰</button>
-        </div>
-    </header>
+    <script src="../JS/dangnhap.js"></script>        
+        <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
+    </div>
+</header>
+
+
     <section class="banner">
         <div class="banner-text">
             <h2>Tôn Vinh Vẻ Đẹp Tự Nhiên</h2>
