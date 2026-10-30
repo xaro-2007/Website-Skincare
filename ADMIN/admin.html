@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Julie Skin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>Julie<span>Skin</span></h2>
+        <p class="label">ADMIN PANEL</p>
+            
+        <nav id="menu">
+            <!-- Các menu giữ nguyên -->
+            <a class="active" href="admin.html">Tổng quan</a>
+            <a href="donhang.html">Đơn hàng</a>
+            <a href="sanpham.html"> Sản phẩm</a>
+            <a href="thongke.html">Thống kê</a>
+        </nav>
+
+        <button class="logout" onclick="alert('Bạn đã đăng xuất!')">
+            Đăng xuất
+        </button>
+    </aside>
+
+    <main class="content">
+
+        <!-- 1. TONG QUAN -->
+        <section class="page active" id="tongquan">
+            <h1>Tổng quan</h1>
+            <p class="subtitle">Tình hình hoạt động của Julie Skin</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Tổng đơn hàng</h3>
+                    <p>0</p>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm</h3>
+                    <p>0</p>
+                </div>
+                <div class="card">
+                    <h3>Tin nhắn</h3>
+                    <p>0</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Hoạt động gần đây</h3>
+                <p>Chưa có hoạt động mới.</p>
+            </div>
+        </section>
+
+        <!-- 2. DON HANG -->
+        <section class="page" id="donhang">
+            <h1>Quản lý đơn hàng</h1>
+            <p class="subtitle">Theo dõi và xử lý đơn hàng</p>
+
+            <div class="panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th>SĐT</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">Chưa có đơn hàng.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. SAN PHAM -->
+        <section class="page" id="sanpham">
+            <h1>Quản lý sản phẩm</h1>
+            <p class="subtitle">Quản lý mỹ phẩm trên website</p>
+
+            <div class="panel">
+                <button class="primary"
+                    onclick="alert('Chức năng thêm sản phẩm sẽ được bổ sung sau!')">
+                    + Thêm sản phẩm
+                </button>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Son dưỡng môi</td>
+                            <td>Makeup</td>
+                            <td>150.000đ</td>
+                            <td><button class="small">Sửa</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. LIEN HE -->
+        <section class="page" id="lienhe">
+            <h1>Quản lý liên hệ</h1>
+            <p class="subtitle">Tin nhắn từ khách hàng</p>
+
+            <div class="panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Khách hàng</th>
+                            <th>Email</th>
+                            <th>Chủ đề</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4">Chưa có tin nhắn.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. THONG KE -->
+        <section class="page" id="thongke">
+            <h1>Thống kê</h1>
+            <p class="subtitle">Tình hình kinh doanh</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Doanh thu</h3>
+                    <p>0đ</p>
+                </div>
+                <div class="card">
+                    <h3>Đơn hàng</h3>
+                    <p>0</p>
+                </div>
+                <div class="card">
+                    <h3>Sản phẩm bán chạy</h3>
+                    <p>—</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Báo cáo</h3>
+                <p>Thống kê sẽ hiển thị khi có dữ liệu đơn hàng.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
