@@ -15,16 +15,6 @@ body {
 }
 
 /* ===== THANH MENU ===== */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 16px 4%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(39, 54, 74, 0.06);
-}
-
 .logo {
     color: #FF6680;
     font-size: 25px;
@@ -160,7 +150,7 @@ textarea {
 }
 
 /* Nut gui */
-button {
+.contact-form button {
     width: 100%;
     margin-top: 22px;
     padding: 14px;
@@ -174,7 +164,7 @@ button {
     transition: 0.2s;
 }
 
-button:hover {
+.contact-form button:hover {
     background: #E94F70;
     transform: translateY(-2px);
 }
@@ -185,67 +175,141 @@ button:hover {
     font-size: 14px;
 }
 
-/* ===== CHAN TRANG ===== */
 footer {
-    padding: 30px 20px;
+    color: white;
+    background-color: #302b31;
+}
+.footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 25px;
+}
+.footer a {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #dddddd;
+}
+.footer h3 span {
+    color: #ff7699;
+}
+.banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #555555;
+    color: #bbbbbb;
     text-align: center;
-    background: #FFF0F4;
-    color: #666;
 }
-
-footer h3 {
-    margin-top: 0;
-    color: #FF6680;
-    font-size: 23px;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-/* ===== MAY TINH BANG ===== */
-@media (max-width: 1000px) {
-    .header {
-        flex-wrap: wrap;
+@media (max-width: 900px) {
+    header {
+        padding-left: 4%;
+        padding-right: 4%;
     }
-
     nav {
-        flex-wrap: wrap;
-        gap: 14px;
+        display: none;
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: white;
     }
 
-    .container {
-        gap: 20px;
-    }
-}
-
-/* ===== DIEN THOAI ===== */
-@media (max-width: 700px) {
-    .header {
-        padding: 15px 5%;
+    nav.open {
+        display: block;
     }
 
-    nav, .account {
-        flex-wrap: wrap;
-        gap: 12px;
+    nav a {
+        display: block;
+        margin-bottom: 10px;
     }
 
-    .container {
-        grid-template-columns: 1fr;
-        margin: 25px auto;
-        padding: 0 15px;
+    #nutMenu {
+        display: block;
     }
 
-    .contact-info, .contact-form {
-        padding: 22px;
+    .header-right input {
+        display: none;
     }
 
     .banner {
-        padding: 45px 18px;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .banner h1 {
-        font-size: 29px;
+    .banner img {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+    }
+
+    .danhMuc {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .veChungToi {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo b {
+        display: none;
+    }
+
+    .header-right > a:first-of-type {
+        display: none;
+    }
+
+    .banner {
+        margin: 10px;
+        padding: 25px 6%;
+    }
+
+    .banner h2 {
+        font-size: 30px;
+    }
+
+    .noiDung {
+        padding: 35px 5%;
+    }
+
+    .danhMuc {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .danhMuc img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .danhMuc a {
+        height: 155px;
+    }
+
+    .gioiThieuAnh img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .khuyenMai {
+        grid-template-columns: 1fr;
+    }
+
+    .dangKy {
+        display: block;
+    }
+
+    .dangKy form {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
     }
 }

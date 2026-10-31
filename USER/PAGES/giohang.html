@@ -5,22 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng - Julie Skin</title>
     <link rel="stylesheet" href="../CSS/giohang.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
 </head>
 
 <body>
-
-    <header class="header">
-        <img class="main-logo" src="../img/logo.png" alt="Jinie"><span><b>Jinie</b></span><b>Skin</b>
-
-        <nav class="navbar">
-            <a href="trangchu.html">Trang chủ</a>|
-            <a href="sanpham.html">Sản phẩm</a>|
-            <a href="vechungtoi.html">Về chúng tôi</a>|
-            <a href="lienhe.html">Liên hệ</a>|
-            <a href="giohang.html" class="active">Giỏ hàng (<span id="cart-count">0</span>) </a>
+    <header>
+        <a href="trangchu.html" class="logo">
+            <img class="main-logo" src="../img/logo.png" alt="Jinie">
+            <span class="brand-text">
+                <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+            </span>
+        </a>
+        <nav id="menu">
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="blog.html">Blog</a>
         </nav>
-    </header>
 
+        <div class="header-right">
+            <div id="authButtons">
+                <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+            </div>
+
+            <div id="userDashboard" style="display: none;">
+                <span>Xin chào, <span id="tenHienThi"></span>!</span>
+                <button onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" id="logUser" placeholder="Tài khoản">
+                    <input type="password" id="logPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangNhap()">Đăng nhập</button>
+                    <button onclick="dongModal('loginModal')">Hủy</button>
+                    <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng ký</h3>
+                    <input type="text" id="regName" placeholder="Họ và tên">
+                    <input type="text" id="regUser" placeholder="Tài khoản">
+                    <input type="password" id="regPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangKy()">Đăng ký</button>
+                    <button onclick="dongModal('registerModal')">Hủy</button>
+                    <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+                </div>
+            </div>
+
+            <script src="../JS/dangnhap.js"></script>
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
+    </header>
     <main class="container">
 
         <h1>Giỏ hàng của bạn</h1>

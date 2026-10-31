@@ -10,64 +10,59 @@
 
 <body>
     <header>
-    <a href="trangchu.html" class="logo">
-        <img class="main-logo" src="../img/logo.png" alt="Jinie">
-        <span class="brand-text">
-            <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
-        </span>
-    </a>
+        <a href="trangchu.html" class="logo">
+            <img class="main-logo" src="../img/logo.png" alt="Jinie">
+            <span class="brand-text">
+                <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+            </span>
+        </a>
+        <nav id="menu">
+            <a class="chon" href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="blog.html">Blog</a>
+        </nav>
 
-    <nav id="menu">
-        <a class="chon" href="trangchu.html">Trang chủ</a>
-        <a href="sanpham.html">Sản phẩm</a>
-        <a href="vechungtoi.html"> Về chúng tôi</a>
-        <a href="lienhe.html">Liên hệ</a>
-        <a href="giohang.html">Giỏ hàng</a>
-    </nav>
-    
-    <div class="header-right">
-        <div id="authButtons">
-            <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+        <div class="header-right">
+            <div id="authButtons">
+                <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+            </div>
+
+            <div id="userDashboard" style="display: none;">
+                <span>Xin chào, <span id="tenHienThi"></span>!</span>
+                <button onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" id="logUser" placeholder="Tài khoản">
+                    <input type="password" id="logPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangNhap()">Đăng nhập</button>
+                    <button onclick="dongModal('loginModal')">Hủy</button>
+                    <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng ký</h3>
+                    <input type="text" id="regName" placeholder="Họ và tên">
+                    <input type="text" id="regUser" placeholder="Tài khoản">
+                    <input type="password" id="regPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangKy()">Đăng ký</button>
+                    <button onclick="dongModal('registerModal')">Hủy</button>
+                    <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+                </div>
+            </div>
+
+            <script src="../JS/dangnhap.js"></script>
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
         </div>
-
-        <div id="userDashboard" style="display: none;">
-            <span>Xin chào, <span id="tenHienThi"></span>!</span>
-            <button onclick="dangXuat()">Đăng xuất</button>
-        </div>
-
-<div id="loginModal" class="modal">
-        <div class="modal-content">
-            <h3>Đăng nhập</h3>
-            <input type="text" id="logUser" placeholder="Tài khoản">
-            <input type="password" id="logPass" placeholder="Mật khẩu">
-            <br><br>
-            <button onclick="dangNhap()">Đăng nhập</button>
-            <button onclick="dongModal('loginModal')">Hủy</button>
-            
-            <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
-        </div>
-    </div>
-
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <h3>Đăng ký</h3>
-            <input type="text" id="regName" placeholder="Họ và tên">
-            <input type="text" id="regUser" placeholder="Tài khoản">
-            <input type="password" id="regPass" placeholder="Mật khẩu">
-            <br><br>
-            <button onclick="dangKy()">Đăng ký</button>
-            <button onclick="dongModal('registerModal')">Hủy</button>
-            
-            <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
-        </div>
-    </div>
-
-    <script src="../JS/dangnhap.js"></script>        
-        <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
-</div>
-</header>
-
-
+    </header>
     <section class="banner">
         <div class="banner-text">
             <h2>Tôn Vinh Vẻ Đẹp Tự Nhiên</h2>
@@ -79,7 +74,7 @@
 
     <section class="noiDung">
             <div class="tieuDe">
-                <h2>Danh mục nổi bật</h2>
+                <h2>Danh mục </h2>
                 <a href="sanpham.html">Xem tất cả →</a>
             </div>
 
@@ -89,18 +84,13 @@
                 <a href="sanpham.html"><img src="../img/phan-mat.png" alt="Phấn mắt"><b>Phấn mắt</b></a>
                 <a href="sanpham.html"><img src="../img/phan-nuoc.png" alt="Phấn nước"><b>Phấn nước</b></a>
                 <a href="sanpham.html"><img src="../img/xit-khoa.png" alt="Xịt khóa nền"><b>Xịt khóa nền</b></a>
-                <a href="sanpham.html"><img src="../img/tay-trang.png" alt="Tẩy trang"><b>Tẩy trang</b></a>
-                <a href="sanpham.html"><img src="../img/chong-nang.png" alt="Chống nắng"><b>Chống nắng</b></a>
-                <a href="sanpham.html"><img src="../img/sua-rua-mat.png" alt="Sữa rửa mặt"><b>Sữa rửa mặt</b></a>
-                <a href="sanpham.html"><img src="../img/kem-duong.png" alt="Kem dưỡng"><b>Kem dưỡng</b></a>
-                <a href="sanpham.html"><img src="../img/mat-na.png" alt="Mặt nạ"><b>Mặt nạ</b></a>
             </div>
         </section>
 
         <section class="noiDung" id="veChungToi">
             <div class="tieuDe">
                 <h2>Về chúng tôi</h2>
-                <a href="sanpham.html">Khám phá sản phẩm →</a>
+                <a href="vechungtoi.html">Khám phá thêm →</a>
             </div>
 
             <div class="veChungToi">
@@ -131,5 +121,6 @@
     </footer>
 
     <script src="../JS/trangchu.js"></script>
+
 </body>
 </html>
