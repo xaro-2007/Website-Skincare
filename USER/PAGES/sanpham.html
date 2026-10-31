@@ -3,70 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sản phẩm - Julie Skin</title>
-
+    <title>Sản phẩm - Jinie Skin</title>
     <link rel="stylesheet" href="../CSS/sanpham.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
 </head>
 
 <body>
     <header>
-        <a href="trangchu.html" class="logo"><img src="../img/logo.png" alt="Jinie"><span>Jinie</span><b>Skin</b></a>
-
+        <a href="trangchu.html" class="logo">
+            <img class="main-logo" src="../img/logo.png" alt="Jinie">
+            <span class="brand-text">
+                <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+            </span>
+        </a>
         <nav id="menu">
-            <a class="chon" href="trangchu.html">Trang chủ</a>
-            <a href="sanpham.html">Sản phẩm</a>
+            <a href="trangchu.html">Trang chủ</a>
+            <a class="chon" href="sanpham.html">Sản phẩm</a>
             <a href="vechungtoi.html">Về chúng tôi</a>
             <a href="lienhe.html">Liên hệ</a>
             <a href="blog.html">Blog</a>
-            <a href="giohang.html">Giỏ hàng(0)</a>
         </nav>
+
         <div class="header-right">
-            <a href="dangnhap.html">Đăng nhập</a>
-            <!-- <button id="nutMenu">☰</button> -->
-            <!-- <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a> -->
+            <div id="authButtons">
+                <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+            </div>
+
+            <div id="userDashboard" style="display: none;">
+                <span>Xin chào, <span id="tenHienThi"></span>!</span>
+                <button onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" id="logUser" placeholder="Tài khoản">
+                    <input type="password" id="logPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangNhap()">Đăng nhập</button>
+                    <button onclick="dongModal('loginModal')">Hủy</button>
+                    <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng ký</h3>
+                    <input type="text" id="regName" placeholder="Họ và tên">
+                    <input type="text" id="regUser" placeholder="Tài khoản">
+                    <input type="password" id="regPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangKy()">Đăng ký</button>
+                    <button onclick="dongModal('registerModal')">Hủy</button>
+                    <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+                </div>
+            </div>
+
+            <script src="../JS/dangnhap.js"></script>
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="cart-count">0</span>)</a>
         </div>
     </header>
-    <!-- BANNER -->
+
     <section class="product-banner">
         <div>
-            <p class="banner-label">JULIE SKIN - BEAUTY STORE</p>
+            <p class="banner-label">JINIE SKIN - BEAUTY STORE</p>
             <h1>Khám phá sản phẩm</h1>
-            <p> Chăm sóc làn da mỗi ngày, tự tin tỏa sáng theo cách của bạn.</p>
+            <p>Chăm sóc làn da mỗi ngày, tự tin tỏa sáng theo cách của bạn.</p>
         </div>
     </section>
 
-    <!-- KHU VỰC SẢN PHẨM -->
     <main class="container">
-
         <div class="section-heading">
             <p class="section-label">BỘ SƯU TẬP CỦA CHÚNG TÔI</p>
             <h2>Sản phẩm mỹ phẩm</h2>
-            <p>Lựa chọn sản phẩm phù hợp với nhu cầu chăm sóc da của bạn.</p>
+            <p>Lựa chọn sản phẩm phù hợp với nhu cầu trang điểm và chăm sóc da của bạn.</p>
         </div>
 
-        <!-- TÌM KIẾM VÀ LỌC -->
         <section class="filter-section">
-
             <div class="search-box">
                 <input
                     type="text"
                     id="search-input"
-                    placeholder="Tìm kiếm sản phẩm..."
+                    placeholder="Tìm kiếm son dưỡng, son bóng, kem dưỡng..."
                     aria-label="Tìm kiếm sản phẩm"
                 >
-
-                <button type="button" id="search-btn"> Tìm kiếm </button>
+                <button type="button" id="search-btn">Tìm kiếm</button>
             </div>
 
             <div class="filter-controls">
-
                 <select id="category-filter" aria-label="Lọc danh mục">
                     <option value="all">Tất cả danh mục</option>
-                    <option value="cleanser">Sữa rửa mặt</option>
-                    <option value="toner">Toner</option>
-                    <option value="serum">Serum</option>
-                    <option value="moisturizer">Kem dưỡng</option>
+                    <option value="son">Son môi</option>
+                    <option value="phấn nước">Phấn nước</option>
+                    <option value="kem lót">Kem lót</option>
+                    <option value="sữa rửa mặt">Sữa rửa mặt</option>
+                    <option value="tẩy trang">Tẩy trang</option>
                 </select>
 
                 <select id="sort-price" aria-label="Sắp xếp giá">
@@ -74,45 +105,44 @@
                     <option value="asc">Giá: Thấp đến cao</option>
                     <option value="desc">Giá: Cao đến thấp</option>
                 </select>
-
             </div>
-
         </section>
-
-        <!-- THÔNG TIN SỐ LƯỢNG -->
-        <div class="product-count">
-            Tìm thấy <strong id="result-count">0</strong> sản phẩm
+        <div class="quick-tags">
+            <button type="button" class="tag-btn active" data-tag="all">Tất cả</button>
+            <button type="button" class="tag-btn" data-tag="Son">Son Môi</button>
+            <button type="button" class="tag-btn" data-tag="Phấn nước">Phấn Nước</button>
+            <button type="button" class="tag-btn" data-tag="Kem Lót">Kem Lót</button>
+            <button type="button" class="tag-btn" data-tag="Sữa rửa mặt">Sữa Rửa Mặt</button>
+            <button type="button" class="tag-btn" data-tag="tẩy trang">Tẩy Trang</button>
         </div>
 
-        <!-- JAVASCRIPT SẼ HIỂN THỊ SẢN PHẨM TẠI ĐÂY -->
+        <div class="product-count">
+            Hiển thị <strong id="result-count">0</strong> sản phẩm
+        </div>
+
+        <!-- Danh sách thẻ sản phẩm được tạo từ sanpham.js -->
         <section id="product-list" class="product-grid"></section>
 
-        <!-- NẾU KHÔNG CÓ SẢN PHẨM -->
         <div id="no-products" class="no-products" hidden>
-            <h3>Không tìm thấy sản phẩm!</h3>
-            <p>Hãy thử tên sản phẩm hoặc danh mục khác.</p>
-            <button type="button" id="reset-filter">
-                Xem tất cả sản phẩm
-            </button>
+            <h3>Không tìm thấy sản phẩm phù hợp!</h3>
+            <p>Hãy thử từ khóa khác hoặc chọn lại danh mục sản phẩm.</p>
+            <button type="button" id="reset-filter">Xem tất cả sản phẩm</button>
         </div>
-
     </main>
 
-    <!-- FOOTER -->
+    <!-- Cửa sổ Xem nhanh chi tiết sản phẩm (Modal) -->
+    <div id="quick-view-modal" class="modal-overlay" hidden>
+        <div class="modal-box">
+            <button type="button" id="close-modal" class="modal-close">✕</button>
+            <div class="modal-body" id="modal-body-content"></div>
+        </div>
+    </div>
+
     <footer class="footer">
-        <a href="trangchu.html" class="footer-logo">
-            JULIE SKIN
-        </a>
-
+        <a href="trangchu.html" class="footer-logo">JINIE SKIN</a>
         <p>Chăm sóc làn da, yêu thương bản thân.</p>
-
-        <p class="copyright">
-            © 2026 Julie Skin. All rights reserved.
-        </p>
+        <p class="copyright">© 2026 Jinie Skin. All rights reserved.</p>
     </footer>
-
-    <!-- FILE JAVASCRIPT -->
     <script src="../JS/sanpham.js"></script>
-
 </body>
 </html>

@@ -20,19 +20,33 @@ header {
     background-color: white;
     border-bottom: 1px solid #eeeeee;
 }
+
 .logo {
     display: flex;
-    align-items: center;
-    font-size: 24px;
-    color: #ff7699;
+    align-items: center; 
+    gap: 12px;          
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: bold;
 }
-.logo img {
+
+.main-logo {
     width: 55px;
     height: 55px;
-    margin-right: 8px;
     border-radius: 50%;
+    object-fit: cover;
 }
-.logo b {
+
+
+.brand-text {
+    font-weight: bold;
+}
+
+.text-jinie {
+    color: #ff7699;
+}
+
+.text-skin {
     color: #333333;
 }
 
@@ -216,4 +230,117 @@ footer {
     border-top: 1px solid #555555;
     color: #bbbbbb;
     text-align: center;
+}
+@media (max-width: 900px) {
+    header {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    nav {
+        display: none;
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: white;
+    }
+
+    nav.open {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #nutMenu {
+        display: block;
+    }
+
+    .header-right input {
+        display: none;
+    }
+
+    .banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .banner img {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+    }
+
+    .danhMuc {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .veChungToi {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo b {
+        display: none;
+    }
+
+    .header-right > a:first-of-type {
+        display: none;
+    }
+
+    .banner {
+        margin: 10px;
+        padding: 25px 6%;
+    }
+
+    .banner h2 {
+        font-size: 30px;
+    }
+
+    .noiDung {
+        padding: 35px 5%;
+    }
+
+    .danhMuc {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .danhMuc img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .danhMuc a {
+        height: 155px;
+    }
+
+    .gioiThieuAnh img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .khuyenMai {
+        grid-template-columns: 1fr;
+    }
+
+    .dangKy {
+        display: block;
+    }
+
+    .dangKy form {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Làm Đẹp - Jinie Skin</title>
+    <link rel="stylesheet" href="../CSS/blog.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
+</head>
+<body>
+    <header>
+        <a href="trangchu.html" class="logo">
+            <img class="main-logo" src="../img/logo.png" alt="Jinie">
+            <span class="brand-text">
+                <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+            </span>
+        </a>
+        <nav id="menu">
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a class="chon" href="blog.html">Blog</a>
+        </nav>
+
+        <div class="header-right">
+            <div id="authButtons">
+                <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+            </div>
+
+            <div id="userDashboard" style="display: none;">
+                <span>Xin chào, <span id="tenHienThi"></span>!</span>
+                <button onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" id="logUser" placeholder="Tài khoản">
+                    <input type="password" id="logPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangNhap()">Đăng nhập</button>
+                    <button onclick="dongModal('loginModal')">Hủy</button>
+                    <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng ký</h3>
+                    <input type="text" id="regName" placeholder="Họ và tên">
+                    <input type="text" id="regUser" placeholder="Tài khoản">
+                    <input type="password" id="regPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangKy()">Đăng ký</button>
+                    <button onclick="dongModal('registerModal')">Hủy</button>
+                    <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+                </div>
+            </div>
+
+            <script src="../JS/dangnhap.js"></script>
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
+        </div>
+    </header>
+    <section class="blog-banner">
+        <p class="banner-tag">CẨM NANG LÀM ĐẸP JINIE SKIN</p>
+        <h1>Góc Chia Sẻ Bí Quyết Chăm Sóc Da & Trang Điểm</h1>
+        <p>Cập nhật xu hướng mỹ phẩm, đánh giá sản phẩm thực tế và mẹo dưỡng da khỏe đẹp mỗi ngày.</p>
+    </section>
+    <main class="container">
+        <section class="featured-post">
+            <img src="../img/cushionTirtir.png" alt="So sánh các dòng Phấn nước Cushion">
+            <div class="featured-content">
+                <span class="post-tag">BÀI VIẾT NỔI BẬT</span>
+                <h2>Bí quyết chọn Phấn nước (Cushion) phù hợp cho từng loại da: TIRTIR, Rom&nd, Mistine hay OHUI?</h2>
+                <p class="post-date">Ngày đăng: 30/10/2026 • Tác giả: Jinie Skin</p>
+                <p>
+                    Nếu bạn có làn da dầu cần độ che phủ cao suốt 10 - 16 giờ, <b>TIRTIR Mask Fit Red Cushion</b> và <b>Cushion Cầu Vồng Mistine</b> là lựa chọn hoàn hảo. Ngược lại, nếu bạn yêu thích lớp nền căng bóng, cấp ẩm sâu tới 70% tinh chất thì <b>Rom&nd Bare Water Cushion</b> và <b>OHUI Ultimate Cover</b> sẽ giúp làn da luôn mịn mướt tự nhiên.
+                </p>
+                <a href="sanpham.html" class="btn-read">Xem các dòng Cushion →</a>
+            </div>
+        </section>
+        <div class="section-title">
+            <h2>Bài Viết Mới Nhất</h2>
+            <p>Những kiến thức hữu ích về các dòng sản phẩm tại Jinie Skin</p>
+        </div>
+        <section class="blog-grid">
+            <div class="blog-card">
+                <img src="../img/son-dhc.png" alt="Son dưỡng môi DHC">
+                <div class="blog-info">
+                    <span class="category-tag">Chăm sóc môi</span>
+                    <h3>Tạm biệt môi khô nứt nẻ với Son Dưỡng Môi DHC Lip Cream Nhật Bản</h3>
+                    <p>Thoa một lớp mỏng son dưỡng DHC trước khi ngủ và trước khi đánh son màu giúp giảm thâm môi và giữ môi mềm mịn suốt cả ngày.</p>
+                </div>
+            </div>
+   
+            <div class="blog-card">
+                <img src="../img/son-romand.jpg" alt="Son bóng Romand và Amuse">
+                <div class="blog-info">
+                    <span class="category-tag">Xu hướng Makeup</span>
+                    <h3>So sánh Son Bóng Rom&nd Glasting và Son Tint Amuse Jel-Fit</h3>
+                    <p>Cả hai đều mang lại hiệu ứng đôi môi căng mọng trong trẻo chuẩn Hàn Quốc. Cùng tìm hiểu chất son nào hợp với phong cách đi học của bạn nhé!</p>
+                </div>
+            </div>
+      
+            <div class="blog-card">
+                <img src="../img/taytrangcocoon.png" alt="Nước tẩy trang Cocoon">
+                <div class="blog-info">
+                    <span class="category-tag">Làm sạch da</span>
+                    <h3>Tại sao phải tẩy trang mỗi ngày với Nước tẩy trang bí đao Cocoon?</h3>
+                    <p>Dù chỉ dùng kem chống nắng, bạn vẫn cần tẩy trang để làm sạch sâu lỗ chân lông, ngăn ngừa mụn ẩn mà vẫn dịu nhẹ, không gây rát da.</p>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="../img/suaruamatCerave.png" alt="Sữa rửa mặt CeraVe">
+                <div class="blog-info">
+                    <span class="category-tag">Chăm sóc da</span>
+                    <h3>Sữa rửa mặt CeraVe: Lựa chọn vàng bảo vệ hàng rào tự nhiên của da</h3>
+                    <p>Công thức dịu nhẹ giúp loại bỏ dầu thừa và bụi bẩn hiệu quả mà không làm da bị khô căng hay bong tróc sau khi rửa mặt.</p>
+                </div>
+            </div>
+   
+            <div class="blog-card">
+                <img src="../img/Kemlotjudydoll.png" alt="Kem lót Judydoll">
+                <div class="blog-info">
+                    <span class="category-tag">Bí quyết lớp nền</span>
+                    <h3>Bí mật để lớp nền mịn mướt không mốc (cakey) nhờ Kem Lót Judydoll</h3>
+                    <p>Sử dụng một lượng nhỏ kem lót trước bước phấn nước giúp che phủ lỗ chân lông và giữ lớp trang điểm bền màu suốt cả ngày dài.</p>
+                </div>
+            </div>
+            
+            <div class="blog-card">
+                <img src="../img/phannuocOhui.png" alt="Phấn nước OHUI">
+                <div class="blog-info">
+                    <span class="category-tag">Review Mỹ Phẩm</span>
+                    <h3>Đánh giá Phấn nước OHUI Minisize: Nhỏ gọn, tiện lợi cho túi xách</h3>
+                    <p>Thiết kế minisize dễ mang theo đi học, đi chơi với lớp nền mịn lì tự nhiên tựa vải satin nhưng vẫn giữ độ ẩm mượt dễ chịu bên trong da.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="tips-box">
+            <h2>3 Quy Tắc Vàng Cho Làn Da Khỏe Đẹp</h2>
+            <div class="tips-list">
+                <div class="tip-item">
+                    <b>1. Làm sạch kép mỗi tối</b>
+                    <p>Kết hợp Nước tẩy trang Cocoon và Sữa rửa mặt CeraVe để da luôn thông thoáng, sạch mụn.</p>
+                </div>
+                <div class="tip-item">
+                    <b>2. Dưỡng ẩm trước khi trang điểm</b>
+                    <p>Dùng Kem lót Judydoll và Son dưỡng DHC trước khi makeup để lớp nền và màu son lên chuẩn nhất.</p>
+                </div>
+                <div class="tip-item">
+                    <b>3. Chọn Cushion đúng loại da</b>
+                    <p>Da dầu nên ưu tiên TIRTIR hoặc Mistine; da khô đến hỗn hợp nên chọn Rom&nd Bare Water.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div>
+                <h3>Jinie<span>Skin</span></h3>
+                <p>Mỹ phẩm dành cho vẻ đẹp tự nhiên và tự tin.</p>
+            </div>
+            <div>
+                <h3>Liên kết</h3>
+                <a href="trangchu.html">Trang chủ</a>
+                <a href="sanpham.html">Sản phẩm</a>
+                <a href="lienhe.html">Liên hệ</a>
+            </div>
+            <div>
+                <h3>Hỗ trợ</h3>
+                <a href="#">Đổi trả</a>
+                <a href="#">Vận chuyển</a>
+                <a href="#">Bảo mật</a>
+            </div>
+            <div>
+                <h3>Liên hệ</h3>
+                <p>99 Tô Hiến Thanh, TP.Đà Nẵng</p>
+                <p>0328414070</p>
+                <p>chungtoilajuline@gmail.com</p>
+            </div>
+        </div>
+        <p class="banQuyen">© 2026 JinieSkin</p>
+    </footer>
+</body>
+</html>

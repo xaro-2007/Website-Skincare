@@ -54,5 +54,18 @@ function dangXuat() {
     document.getElementById('userDashboard').style.display = 'none';
     document.getElementById('authButtons').style.display = 'block';
     
-    document.querySelectorAll('input').forEach(input => input.value = '');
+    document.querySelectorAll('.modal-content input').forEach(input => input.value = '');
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    try {
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        if (Array.isArray(cart)) {
+            const total = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+            const soLuongEl = document.getElementById("soLuong");
+            const cartCountEl = document.getElementById("cart-count");
+            if (soLuongEl) soLuongEl.textContent = total;
+            if (cartCountEl) cartCountEl.textContent = total;
+        }
+    } catch (e) {}
+});

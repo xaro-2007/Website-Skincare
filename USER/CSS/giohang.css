@@ -12,22 +12,19 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 7%;
-    background-color: white;
-    border-bottom: 1px solid #f0dfe4;
-}
-
 .logo {
     color: #c75b7a;
     font-size: 25px;
     font-weight: bold;
     text-decoration: none;
 }
+
+.main-logo {           
+    width: 55px;       
+    height: 55px;      
+    margin-right: 8px; 
+    border-radius: 50%;
+}                      
 
 .navbar {
     display: flex;
@@ -241,12 +238,6 @@ body {
 
 /* RESPONSIVE CHO ĐIỆN THOẠI */
 @media screen and (max-width: 768px) {
-
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
-    }
 
     .nav {
         flex-wrap: wrap;

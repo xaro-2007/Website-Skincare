@@ -1,83 +1,123 @@
 const products = [
     {
         id: 1,
-        name: "Sữa rửa mặt dịu nhẹ",
-        category: "cleanser",
-        categoryName: "Sữa rửa mặt",
-        price: 150000,
-        description: "Làm sạch da nhẹ nhàng mỗi ngày.",
-        img: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=600&q=80",
-        badge: "Bán chạy"
+        name: "Son Dưỡng Môi DHC Lip Cream Nhật Bản",
+        price: 165000,
+        oldPrice: 210000,
+        stars: "★★★★★",
+        reviews: 158,
+        description: "Cấp ẩm sâu, giảm thâm và giúp đôi môi mềm mịn suốt cả ngày.",
+        img: "../img/son-dhc.png",
+        badge: "Bán chạy",
+        badgeClass: "hot"
     },
     {
         id: 2,
-        name: "Sữa rửa mặt dưỡng ẩm",
-        category: "cleanser",
-        categoryName: "Sữa rửa mặt",
+        name: "Son Bóng Rom&nd Glasting Color Gloss",
         price: 180000,
-        description: "Hỗ trợ làm sạch và giữ ẩm cho da.",
-        img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80",
-        badge: ""
+        oldPrice: 225000,
+        stars: "★★★★★",
+        reviews: 142,
+        description: "Chất son bóng trong trẻo, lên màu chuẩn đẹp và căng mọng tự nhiên.",
+        img: "../img/son-romand.jpg",
+        badge: "Mới",
+        badgeClass: "new"
     },
     {
         id: 3,
-        name: "Toner cấp ẩm",
-        category: "toner",
-        categoryName: "Toner",
-        price: 220000,
-        description: "Bổ sung độ ẩm cho làn da.",
-        img: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=600&q=80",
-        badge: "Mới"
+        name: "Son Tint Bóng Amuse Jel-Fit Tint Hàn Quốc",
+        price: 235000,
+        oldPrice: 290000,
+        stars: "★★★★☆",
+        reviews: 96,
+        description: "Thiết kế nhỏ xinh, chất son thạch bóng mượt và bám màu lâu trôi.",
+        img: "../img/son-amuse.jpg",
+        badge: "-20%",
+        badgeClass: "sale"
     },
     {
         id: 4,
-        name: "Toner làm dịu da",
-        category: "toner",
-        categoryName: "Toner",
-        price: 195000,
-        description: "Bước chăm sóc da sau khi rửa mặt.",
-        img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=80",
-        badge: ""
+        name: "Kem Lót JuDyDoll",
+        price: 190000,
+        oldPrice: 240000,
+        stars: "★★★★★",
+        reviews: 115,
+        description: "Che phủ mịn mướt",
+        img: "../img/Kemlotjudydoll.png",
+        badge: "Bán chạy",
+        badgeClass: "hot"
     },
     {
         id: 5,
-        name: "Serum dưỡng da",
-        category: "serum",
-        categoryName: "Serum",
-        price: 320000,
-        description: "Bổ sung dưỡng chất cho quy trình dưỡng da.",
-        img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80",
-        badge: "Bán chạy"
+        name: "Nước tẩy trang bí CoCoon",
+        price: 145000,
+        oldPrice: 180000,
+        stars: "★★★★☆",
+        reviews: 78,
+        description: "Làm dịu da, an toàn, lành tính",
+        img: "../img/taytrangcocoon.png",
+        badge: "Mới",
+        badgeClass: "new"
     },
     {
         id: 6,
-        name: "Serum cấp ẩm",
-        category: "serum",
-        categoryName: "Serum",
-        price: 350000,
-        description: "Hỗ trợ duy trì độ ẩm cho da.",
-        img: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=600&q=80",
-        badge: ""
+        name: "Sữa rửa mặt CeraVe",
+        price: 210000,
+        oldPrice: 260000,
+        stars: "★★★★★",
+        reviews: 84,
+        description: "Loại bỏ dầu thừa, lớp trang điểm và bụi bẩn mà không làm phá vỡ hàng rào bảo vệ tự nhiên của da, không làm da bị bong tróc.",
+        img: "../img/suaruamatCerave.png",
+        badge: "-20%",
+        badgeClass: "sale"
     },
     {
         id: 7,
-        name: "Kem dưỡng ẩm",
-        category: "moisturizer",
-        categoryName: "Kem dưỡng",
-        price: 280000,
-        description: "Giúp da mềm mại và đủ ẩm.",
-        img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80",
-        badge: "Yêu thích"
+        name: "Phấn nước TIRTIR Mask Fit Red Cushion",
+        price: 450000,
+        oldPrice: 550000,
+        stars: "★★★★★",
+        reviews: 130,
+        description: "Che khuyết điểm tốt, kiềm dầu suốt 10 giờ và mang lại lớp nền căng bóng.",
+        img: "../img/cushionTirtir.png",
+        badge: "Bán chạy",
+        badgeClass: "hot"
     },
     {
         id: 8,
-        name: "Kem dưỡng ban đêm",
-        category: "moisturizer",
-        categoryName: "Kem dưỡng",
+        name: "Phấn nước rom&nd Bare Water Cushion",
+        price: 360000,
+        oldPrice: 420000,
+        stars: "★★★★★",
+        reviews: 210,
+        description: "Cấp ẩm chuyên sâu (70% tinh chất), làm mát da, và tạo hiệu ứng căng bóng trong suốt.",
+        img: "../img/cushionromend.png",
+        badge: "Bán chạy",
+        badgeClass: "hot"
+    },
+    {
+        id: 9,
+        name: "Phấn nước Cushion Cầu Vồng Xiêm La MISTINE",
         price: 390000,
-        description: "Bổ sung bước dưỡng ẩm vào buổi tối.",
-        img: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
-        badge: ""
+        oldPrice: 450000,
+        stars: "★★★★☆",
+        reviews: 105,
+        description: "Khả năng kiềm dầu vượt trội kéo dài từ 12 - 16 tiếng, chống nước và mồ hôi rất tốt, giữ lớp nền không bị xỉn màu.",
+        img: "../img/phannuocmistin.png",
+        badge: "Mới",
+        badgeClass: "new"
+    },
+    {
+        id: 10,
+        name: "Phấn nước OHUI Ultimate Cover Denier Cushion 70D21 Minisize",
+        price: 275000,
+        oldPrice: 435000,
+        stars: "★★★★★",
+        reviews: 164,
+        description: "Hiệu ứng mịn lì tự nhiên tựa vải satin, ráo mịn bên ngoài nhưng vẫn giữ độ ẩm mượt dễ chịu bên trong da.",
+        img: "../img/phannuocOhui.png",
+        badge: "-20%",
+        badgeClass: "sale"
     }
 ];
 
@@ -89,12 +129,15 @@ const sortPrice = document.getElementById("sort-price");
 const resultCount = document.getElementById("result-count");
 const noProducts = document.getElementById("no-products");
 const resetButton = document.getElementById("reset-filter");
+const tagButtons = document.querySelectorAll(".tag-btn");
 
-// 3. ĐỊNH DẠNG TIỀN VIỆT NAM
+let activeTag = "all";
+
+
 function formatMoney(price) {
     return price.toLocaleString("vi-VN") + " ₫";
 }
-// 4. ĐỌC GIỎ HÀNG TỪ LOCALSTORAGE
+
 function getCart() {
     try {
         const cart = JSON.parse(localStorage.getItem("cart"));
@@ -105,7 +148,8 @@ function getCart() {
         return [];
     }
 }
-// 5. LƯU GIỎ HÀNG
+
+
 function saveCart(cart) {
     try {
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -116,7 +160,6 @@ function saveCart(cart) {
         return false;
     }
 }
-// 6. CẬP NHẬT SỐ LƯỢNG GIỎ HÀNG
 function updateCartCount() {
     const cart = getCart();
 
@@ -130,51 +173,61 @@ function updateCartCount() {
         cartCount.textContent = totalQuantity;
     }
 }
-// 7. HIỂN THỊ SẢN PHẨM
+
+
 function renderProducts(productArray) {
     if (!productList) {
         return;
     }
-    // Hiển thị số lượng kết quả
+
     resultCount.textContent = productArray.length;
-    // Nếu không tìm thấy sản phẩm
+
     if (productArray.length === 0) {
         productList.innerHTML = "";
         noProducts.hidden = false;
         return;
     }
     noProducts.hidden = true;
-    // Tạo giao diện cho từng sản phẩm
+
     productList.innerHTML = productArray.map(product => `
         <article class="product-card">
-            <div class="product-image">
+            ${
+                product.badge
+                    ? `<span class="badge ${product.badgeClass}">${product.badge}</span>`
+                    : ""
+            }
+            <div class="product-img-wrap" onclick="openQuickView(${product.id})">
                 <img
                     src="${product.img}"
                     alt="${product.name}"
                     loading="lazy"
                 >
+            </div>
+            <h4>
+                ${product.name}
+            </h4>
+            <div class="stars">
+                ${product.stars} <span>(${product.reviews})</span>
+            </div>
+            <div class="price">
+                <span class="current-price">${formatMoney(product.price)}</span>
                 ${
-                    product.badge
-                        ? `<span class="product-badge">${product.badge}</span>`
+                    product.oldPrice
+                        ? `<span class="old-price">${formatMoney(product.oldPrice)}</span>`
                         : ""
                 }
             </div>
-            <div class="product-info">
-                <p class="product-category">
-                    ${product.categoryName}
-                </p>
-                <h3 class="product-name">
-                    ${product.name}
-                </h3>
-                <p class="product-description">
-                    ${product.description}
-                </p>
-                <p class="product-price">
-                    ${formatMoney(product.price)}
-                </p>
+            <div class="card-buttons">
                 <button
                     type="button"
-                    class="add-cart-btn"
+                    class="btn-quick-view"
+                    onclick="openQuickView(${product.id})"
+                >
+                    Xem nhanh
+                </button>
+                <button
+                    type="button"
+                    class="btn-add-cart add-cart-btn"
                     data-product-id="${product.id}"
                 >
                     Thêm vào giỏ hàng
@@ -183,37 +236,46 @@ function renderProducts(productArray) {
         </article>
     `).join("");
 }
-// 8. TÌM KIẾM, LỌC VÀ SẮP XẾP
+
 function filterProducts() {
-    // Lấy nội dung tìm kiếm
+
     const keyword = searchInput.value
         .trim()
         .toLowerCase();
-    // Lấy danh mục được chọn
-    const selectedCategory = categoryFilter.value;
-    // Lọc sản phẩm
+
+    const selectedCategory = categoryFilter ? categoryFilter.value : "all";
+
     let filteredProducts = products.filter(product => {
-        const matchesName = product.name
-            .toLowerCase()
-            .includes(keyword);
+        const nameLower = product.name.toLowerCase();
+
+        const matchesName = nameLower.includes(keyword);
+
         const matchesCategory =
             selectedCategory === "all" ||
-            product.category === selectedCategory;
-        return matchesName && matchesCategory;
+            nameLower.includes(selectedCategory.toLowerCase());
+
+        let matchesTag = true;
+        if (activeTag !== "all") {
+            const tagKey = activeTag.toLowerCase();
+            matchesTag =
+                nameLower.includes(tagKey) ||
+                product.badge.toLowerCase().includes(tagKey);
+        }
+
+        return matchesName && matchesCategory && matchesTag;
     });
-    // Sắp xếp giá
     if (sortPrice.value === "asc") {
         filteredProducts.sort((a, b) => a.price - b.price);
     }
     if (sortPrice.value === "desc") {
         filteredProducts.sort((a, b) => b.price - a.price);
     }
-    // Hiển thị kết quả
+
     renderProducts(filteredProducts);
 }
-// 9. THÊM SẢN PHẨM VÀO GIỎ HÀNG
+
 function addToCart(productId) {
-    // Tìm sản phẩm theo ID
+
     const product = products.find(item => {
         return item.id === Number(productId);
     });
@@ -221,17 +283,15 @@ function addToCart(productId) {
         alert("Không tìm thấy sản phẩm!");
         return;
     }
-    // Lấy giỏ hàng hiện tại
+
     const cart = getCart();
-    // Kiểm tra sản phẩm đã có trong giỏ chưa
+
     const existingProduct = cart.find(item => {
         return String(item.id) === String(product.id);
     });
     if (existingProduct) {
-        // Nếu đã có thì tăng số lượng
         existingProduct.quantity += 1;
     } else {
-        // Nếu chưa có thì thêm sản phẩm mới
         cart.push({
             id: product.id,
             name: product.name,
@@ -240,47 +300,120 @@ function addToCart(productId) {
             quantity: 1
         });
     }
-    // Lưu giỏ hàng
+
     if (saveCart(cart)) {
-        // Cập nhật số lượng hiển thị
+
         updateCartCount();
         alert("Đã thêm " + product.name + " vào giỏ hàng!");
     }
 }
-// 10. XỬ LÝ NÚT THÊM VÀO GIỎ HÀNG
 if (productList) {
     productList.addEventListener("click", function(event) {
-        // Tìm nút được nhấn
         const button = event.target.closest(".add-cart-btn");
         if (!button) {
             return;
         }
-        // Lấy ID sản phẩm từ thuộc tính data
+
         const productId = button.dataset.productId;
-        // Thêm sản phẩm vào giỏ
+
         addToCart(productId);
     });
 }
-// 11. GẮN SỰ KIỆN TÌM KIẾM VÀ LỌC
-// Tìm kiếm khi nhập từ khóa
+
+
+// Cửa sổ Xem nhanh chi tiết
+const quickViewModal = document.getElementById("quick-view-modal");
+const modalBodyContent = document.getElementById("modal-body-content");
+const closeModalBtn = document.getElementById("close-modal");
+
+function openQuickView(productId) {
+    const product = products.find(item => item.id === Number(productId));
+    if (!product || !quickViewModal) return;
+
+    modalBodyContent.innerHTML = `
+        <div class="modal-img">
+            <img src="${product.img}" alt="${product.name}">
+        </div>
+        <div class="modal-info">
+            <span class="badge ${product.badgeClass}">${product.badge}</span>
+            <h3>${product.name}</h3>
+            <div class="stars">${product.stars} <span>(${product.reviews} đánh giá)</span></div>
+            <p class="modal-desc">${product.description}</p>
+            <div class="price">
+                <span class="current-price">${formatMoney(product.price)}</span>
+                ${
+                    product.oldPrice
+                        ? `<span class="old-price">${formatMoney(product.oldPrice)}</span>`
+                        : ""
+                }
+            </div>
+            <button
+                type="button"
+                class="btn-add-cart modal-add-btn"
+                onclick="addToCart(${product.id}); quickViewModal.hidden = true;"
+            >
+                Thêm vào giỏ hàng
+            </button>
+        </div>
+    `;
+
+    quickViewModal.hidden = false;
+}
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", function () {
+        quickViewModal.hidden = true;
+    });
+}
+
+if (quickViewModal) {
+    quickViewModal.addEventListener("click", function (event) {
+        if (event.target === quickViewModal) {
+            quickViewModal.hidden = true;
+        }
+    });
+}
+
 searchInput.addEventListener("input", filterProducts);
-// Tìm kiếm khi nhấn nút
+
 searchButton.addEventListener("click", filterProducts);
-// Lọc theo danh mục
-categoryFilter.addEventListener("change", filterProducts);
-// Sắp xếp theo giá
+
+if (categoryFilter) {
+    categoryFilter.addEventListener("change", filterProducts);
+}
+
 sortPrice.addEventListener("change", filterProducts);
-// 12. ĐẶT LẠI BỘ LỌC
+
+for (let i = 0; i < tagButtons.length; i++) {
+    tagButtons[i].addEventListener("click", function () {
+        if (this.classList.contains("active") && this.dataset.tag !== "all") {
+            this.classList.remove("active");
+            activeTag = "all";
+        } else {
+            for (let j = 0; j < tagButtons.length; j++) {
+                tagButtons[j].classList.remove("active");
+            }
+            this.classList.add("active");
+            activeTag = this.dataset.tag;
+        }
+        filterProducts();
+    });
+}
+
 resetButton.addEventListener("click", function() {
     searchInput.value = "";
-    categoryFilter.value = "all";
+    if (categoryFilter) categoryFilter.value = "all";
     sortPrice.value = "default";
+    activeTag = "all";
+    for (let j = 0; j < tagButtons.length; j++) {
+        tagButtons[j].classList.remove("active");
+    }
     filterProducts();
 });
-// 13. KHỞI ĐỘNG TRANG
+
 document.addEventListener("DOMContentLoaded", function() {
-    // Hiển thị tất cả sản phẩm
+
     filterProducts();
-    // Hiển thị số lượng trong giỏ hàng
+
     updateCartCount();
 });

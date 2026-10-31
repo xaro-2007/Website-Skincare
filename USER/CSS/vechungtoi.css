@@ -22,16 +22,6 @@ img {
     max-width: 100%;
 }
 
-/* ===== HEADER ===== */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 8%;
-    background-color: #fff;
-    border-bottom: 1px solid #f3e4e9;
-}
-
 .logo {
     display: flex;
     align-items: center;
@@ -51,6 +41,13 @@ img {
     font-weight: normal;
     color: #888;
 }
+
+.main-logo {           
+    width: 55px;       
+    height: 55px;      
+    margin-right: 8px; 
+    border-radius: 50%;
+}                      
 
 .navbar {
     display: flex;
@@ -289,10 +286,6 @@ img {
 
 /* ===== TABLET ===== */
 @media screen and (max-width: 992px) {
-    .header {
-        padding: 15px 5%;
-    }
-
     .navbar {
         gap: 15px;
     }
@@ -310,12 +303,6 @@ img {
 
 /* ===== ĐIỆN THOẠI ===== */
 @media screen and (max-width: 600px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 5%;
-    }
-
     .navbar {
         width: 100%;
         justify-content: center;
