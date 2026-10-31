@@ -278,52 +278,192 @@ if (cartContainer) {
 // 12. XỬ LÝ ĐẶT HÀNG
 // ========================================
 
-function checkout() {
-    const cart = getCart();
+// function checkout() {
+//     const cart = getCart();
 
-    // Không cho đặt hàng nếu giỏ hàng trống
-    if (cart.length === 0) {
-        alert("Giỏ hàng đang trống!");
-        return;
-    }
+//     // Không cho đặt hàng nếu giỏ hàng trống
+//     if (cart.length === 0) {
+//         alert("Giỏ hàng đang trống!");
+//         return;
+//     }
 
-    // Lấy thông tin khách hàng
-    const name = prompt("Nhập họ và tên của bạn:");
+//     // Lấy thông tin khách hàng
+//     const name = prompt("Nhập họ và tên của bạn:");
 
-    if (name === null || name.trim() === "") {
-        alert("Vui lòng nhập họ và tên.");
-        return;
-    }
+//     if (name === null || name.trim() === "") {
+//         alert("Vui lòng nhập họ và tên.");
+//         return;
+//     }
 
-    const phone = prompt("Nhập số điện thoại:");
+//     const phone = prompt("Nhập số điện thoại:");
 
-    if (phone === null || phone.trim() === "") {
-        alert("Vui lòng nhập số điện thoại.");
-        return;
-    }
+//     if (phone === null || phone.trim() === "") {
+//         alert("Vui lòng nhập số điện thoại.");
+//         return;
+//     }
 
-    const address = prompt("Nhập địa chỉ nhận hàng:");
+//     const address = prompt("Nhập địa chỉ nhận hàng:");
 
-    if (address === null || address.trim() === "") {
-        alert("Vui lòng nhập địa chỉ nhận hàng.");
-        return;
-    }
+//     if (address === null || address.trim() === "") {
+//         alert("Vui lòng nhập địa chỉ nhận hàng.");
+//         return;
+//     }
 
-    // Tính tiền đơn hàng
-    const subtotal = cart.reduce((sum, product) => {
-        return sum + product.price * product.quantity;
-    }, 0);
+//     // Tính tiền đơn hàng
+//     const subtotal = cart.reduce((sum, product) => {
+//         return sum + product.price * product.quantity;
+//     }, 0);
 
-    const total = subtotal + SHIPPING_FEE;
+//     const total = subtotal + SHIPPING_FEE;
 
-    // Hiển thị thông báo xác nhận
-    alert(
-        "THÔNG TIN ĐƠN HÀNG\n\n" +
-        "Khách hàng: " + name.trim() + "\n" +
-        "Số điện thoại: " + phone.trim() + "\n" +
-        "Địa chỉ: " + address.trim() + "\n" +
-        "Tổng thanh toán: " + formatMoney(total) + "\n\n" 
-    );
+//     // Hiển thị thông báo xác nhận
+//     alert(
+//         "THÔNG TIN ĐƠN HÀNG\n\n" +
+//         "Khách hàng: " + name.trim() + "\n" +
+//         "Số điện thoại: " + phone.trim() + "\n" +
+//         "Địa chỉ: " + address.trim() + "\n" +
+//         "Tổng thanh toán: " + formatMoney(total) + "\n\n" 
+//     );
+// }
+
+// ========================================
+// 12. XỬ LÝ FORM ĐẶT HÀNG
+// ========================================
+
+// Lấy các phần tử HTML
+const checkoutButton = document.getElementById("checkout-btn");
+const checkoutForm = document.getElementById("checkout-form");
+const orderForm = document.getElementById("order-form");
+const cancelButton = document.getElementById("cancel-btn");
+
+// Khi nhấn Tiến hành đặt hàng
+if (checkoutButton) {
+
+    checkoutButton.addEventListener("click", function() {
+
+        const cart = getCart();
+
+        if (cart.length === 0) {
+            alert("Giỏ hàng đang trống!");
+            return;
+        }
+
+        // Hiện form đặt hàng
+        checkoutForm.classList.add("show");
+
+        // Cuộn đến form
+        checkoutForm.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+
+// Khi nhấn nút Hủy
+if (cancelButton) {
+
+    cancelButton.addEventListener("click", function() {
+
+        // Ẩn form
+        checkoutForm.classList.remove("show");
+
+    });
+
+}
+
+
+// Khi người dùng xác nhận đặt hàng
+if (orderForm) {
+
+    orderForm.addEventListener("submit", function(event) {
+
+        // Ngăn trang web tải lại
+        event.preventDefault();
+
+        const cart = getCart();
+
+        if (cart.length === 0) {
+            alert("Giỏ hàng đang trống!");
+            checkoutForm.classList.remove("show");
+            renderCart();
+            return;
+        }
+
+        // Lấy thông tin khách hàng
+        const name = document.getElementById("customer-name").value.trim();
+
+        const phone = document.getElementById("customer-phone").value.trim();
+
+        const email = document.getElementById("customer-email").value.trim();
+
+        const address = document.getElementById("customer-address").value.trim();
+
+        const note = document.getElementById("customer-note").value.trim();
+
+        // Tính tổng tiền
+        const subtotal = cart.reduce((sum, product) => {
+            return sum + product.price * product.quantity;
+        }, 0);
+
+        const total = subtotal + SHIPPING_FEE;
+
+        // Tạo thông tin đơn hàng
+        const order = {
+            id: "DH" + Date.now(),
+
+            customer: {
+                name: name,
+                phone: phone,
+                email: email,
+                address: address,
+                note: note
+            },
+
+            products: cart,
+
+            subtotal: subtotal,
+
+            shipping: SHIPPING_FEE,
+
+            total: total,
+
+            orderDate: new Date().toLocaleString("vi-VN")
+        };
+
+        // Lưu đơn hàng vào localStorage
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        orders.push(order);
+
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        // Xóa giỏ hàng sau khi đặt hàng thành công
+        if (!saveCart([])) {
+            alert("Không thể cập nhật giỏ hàng. Vui lòng thử lại.");
+            return;
+        }
+
+        // Thông báo
+        alert(
+            "ĐẶT HÀNG THÀNH CÔNG!\n\n" +
+            "Mã đơn hàng: " + order.id + "\n" +
+            "Khách hàng: " + name + "\n" +
+            "Số điện thoại: " + phone + "\n" +
+            "Địa chỉ: " + address + "\n" +
+            "Tổng thanh toán: " + formatMoney(total)
+        );
+
+        // Làm mới giao diện
+        orderForm.reset();
+
+        checkoutForm.classList.remove("show");
+
+        renderCart();
+
+    });
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {

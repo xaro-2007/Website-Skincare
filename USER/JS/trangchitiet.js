@@ -323,7 +323,7 @@ function addProductToCart() {
     // Lưu vào localStorage
 
     if (saveCart(cart)) {
-
+        
         updateCartCount();
 
         alert(
