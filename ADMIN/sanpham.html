@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - Julie Skin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Julie<span>Skin</span></h2>
+        <p class="label">ADMIN PANEL</p>
+
+        <nav id="menu">
+            <a href="admin.html">Tổng quan</a>
+            <a href="donhang.html">Đơn hàng</a>
+            <a href="sanpham.html" class="active">Sản phẩm</a>
+            <a href="thongke.html">Thống kê</a>
+        </nav>
+
+        <button class="logout" type="button"
+            onclick="alert('Chức năng đăng xuất cần được kết nối sau.')">
+            Đăng xuất
+        </button>
+    </aside>
+
+    <main class="content">
+        <header class="page-header">
+            <div>
+                <h1>Quản lý sản phẩm</h1>
+                <p class="subtitle">
+                    Thêm, cập nhật và quản lý sản phẩm của Julie Skin.
+                </p>
+            </div>
+
+            <button id="add-product-btn" class="primary" type="button">
+                + Thêm sản phẩm
+            </button>
+        </header>
+
+        <!-- THỐNG KÊ -->
+        <section class="cards">
+            <article class="card">
+                <h3>Tổng sản phẩm</h3>
+                <p id="total-products">0</p>
+            </article>
+
+            <article class="card">
+                <h3>Danh mục</h3>
+                <p id="total-categories">0</p>
+            </article>
+
+            <article class="card">
+                <h3>Giá trung bình</h3>
+                <p id="average-price">0 ₫</p>
+            </article>
+        </section>
+
+        <!-- TÌM KIẾM VÀ LỌC -->
+        <section class="panel">
+            <div class="toolbar">
+                <input
+                    id="product-search"
+                    type="search"
+                    placeholder="Tìm theo tên sản phẩm..."
+                    aria-label="Tìm sản phẩm"
+                >
+
+                <select id="category-filter" aria-label="Lọc danh mục">
+                    <option value="all">Tất cả danh mục</option>
+                    <option value="cleanser">Sữa rửa mặt</option>
+                    <option value="toner">Toner</option>
+                    <option value="serum">Serum</option>
+                    <option value="moisturizer">Kem dưỡng</option>
+                </select>
+            </div>
+
+            <!-- BẢNG SẢN PHẨM -->
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Giá bán</th>
+                            <th>Số lượng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="product-table-body"></tbody>
+                </table>
+            </div>
+
+            <p id="empty-message" class="empty-message" hidden>
+                Chưa có sản phẩm phù hợp.
+            </p>
+
+            <p class="note">
+                Dữ liệu demo được lưu trong trình duyệt hiện tại.
+            </p>
+        </section>
+    </main>
+
+    <!-- FORM THÊM / SỬA SẢN PHẨM -->
+    <dialog id="product-dialog" class="product-dialog">
+        <form id="product-form">
+            <div class="dialog-header">
+                <h2 id="dialog-title">Thêm sản phẩm</h2>
+
+                <button
+                    id="close-dialog"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Đóng"
+                >×</button>
+            </div>
+
+            <input type="hidden" id="product-id">
+
+            <label for="product-name">Tên sản phẩm *</label>
+            <input
+                id="product-name"
+                type="text"
+                required
+                maxlength="100"
+                placeholder="Ví dụ: Toner cấp ẩm"
+            >
+
+            <label for="product-category">Danh mục *</label>
+            <select id="product-category" required>
+                <option value="cleanser">Sữa rửa mặt</option>
+                <option value="toner">Toner</option>
+                <option value="serum">Serum</option>
+                <option value="moisturizer">Kem dưỡng</option>
+            </select>
+
+            <label for="product-price">Giá bán (VNĐ) *</label>
+            <input
+                id="product-price"
+                type="number"
+                min="0"
+                step="1000"
+                required
+                placeholder="Ví dụ: 220000"
+            >
+
+            <label for="product-stock">Số lượng tồn kho *</label>
+            <input
+                id="product-stock"
+                type="number"
+                min="0"
+                step="1"
+                required
+                value="0"
+            >
+
+            <label for="product-image">Đường dẫn hình ảnh *</label>
+            <input
+                id="product-image"
+                type="url"
+                required
+                placeholder="https://..."
+            >
+
+            <label for="product-description">Mô tả</label>
+            <textarea
+                id="product-description"
+                rows="3"
+                maxlength="300"
+                placeholder="Mô tả ngắn về sản phẩm"
+            ></textarea>
+
+            <label for="product-badge">Nhãn sản phẩm</label>
+            <input
+                id="product-badge"
+                type="text"
+                maxlength="30"
+                placeholder="Ví dụ: Bán chạy"
+            >
+
+            <div class="form-actions">
+                <button
+                    id="cancel-dialog"
+                    class="secondary"
+                    type="button"
+                >Hủy</button>
+
+                <button class="primary" type="submit">
+                    Lưu sản phẩm
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="admin-sanpham.js"></script>
+</body>
+</html>
