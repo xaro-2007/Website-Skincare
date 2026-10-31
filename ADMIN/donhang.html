@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý đơn hàng | Julie Skin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Julie<span>Skin</span></h2>
+        <p class="label">ADMIN PANEL</p>
+
+        <nav id="menu">
+            <a href="admin.html">Tổng quan</a>
+            <a href="donhang.html">Đơn hàng</a>
+            <a href="sanpham.html" class="active">Sản phẩm</a>
+            <a href="thongke.html">Thống kê</a>
+        </nav>
+
+        <button class="logout" type="button"
+            onclick="alert('Chức năng đăng xuất cần được kết nối sau.')">
+            Đăng xuất
+        </button>
+    </aside>
+    <!-- Nội dung chính -->
+        <main class="content">
+            <header class="admin-header">
+                <div>
+                <h1>Quản lý đơn hàng</h1>
+                <p>Theo dõi và xử lý đơn hàng của Julie Skin</p>
+                </div>
+            </header>
+
+            <!-- Thẻ thống kê -->
+            <section class="stats-grid">
+                <article class="stat-card">
+                <p>Tổng đơn hàng</p>
+                <h2 id="total-orders">0</h2>
+                </article>
+
+                <article class="stat-card">
+                <p>Chờ xác nhận</p>
+                <h2 id="pending-orders">0</h2>
+                </article>
+
+                <article class="stat-card">
+                <p>Đang giao</p>
+                <h2 id="shipping-orders">0</h2>
+                </article>
+
+                <article class="stat-card">
+                <p>Đã hoàn thành</p>
+                <h2 id="completed-orders">0</h2>
+                </article>
+            </section>
+
+            <!-- Bộ lọc đơn hàng -->
+            <section class="admin-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Danh sách đơn hàng</h2>
+                        <p>Tra cứu và cập nhật trạng thái đơn hàng</p>
+                    </div>
+                </div>
+
+                <div class="product-toolbar">
+                    <input
+                        type="text"
+                        id="search-order"
+                        placeholder="Tìm mã đơn hoặc tên khách hàng..."
+                    >
+
+                    <select id="filter-status">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="Chờ xác nhận">Chờ xác nhận</option>
+                        <option value="Đã xác nhận">Đã xác nhận</option>
+                        <option value="Đang giao">Đang giao</option>
+                        <option value="Đã giao">Đã giao</option>
+                        <option value="Đã hủy">Đã hủy</option>
+                    </select>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                        <tr>
+                            <th>Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody id="order-list"></tbody>
+                    </table>
+                </div>
+
+                <p id="empty-orders" hidden>
+                    Không tìm thấy đơn hàng phù hợp.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Hộp thoại xem chi tiết đơn hàng -->
+    <dialog id="order-dialog">
+        <div class="dialog-header">
+        <h2>Chi tiết đơn hàng</h2>
+        <button type="button" id="close-dialog" class="close-btn">
+            &times;
+        </button>
+        </div>
+
+        <div id="order-detail"></div>
+    </dialog>
+
+    <script src="admin-donhang.js"></script>
+</body>
+</html>
