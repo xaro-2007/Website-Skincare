@@ -139,9 +139,6 @@ async function initUsers() {
     document.getElementById("close-user-dialog").addEventListener("click", closeDialog);
     document.getElementById("cancel-user-dialog").addEventListener("click", closeDialog);
 
-    document.getElementById("export-users-btn").addEventListener("click", function () {
-        downloadJSON("users.json", getUsers());
-    });
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
