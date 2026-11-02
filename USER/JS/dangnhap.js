@@ -70,11 +70,12 @@ function dangNhap() {
         alert("Đăng nhập quyền Admin thành công!");
         dongModal('loginModal');
         
-        
-        window.location.href = "../../ADMIN/pages/admin.html";
+        // Chuyển hướng chính xác vào thư mục ADMIN/pages/admin.html
+        window.location.href = "../../ADMIN/pages/admin.html"; 
         return;
     }
 
+    // 2. Kiểm tra tài khoản khách hàng thông thường (`accounts`)
     let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
     const foundUser = accounts.find(acc => acc.user === user && acc.pass === pass);
 
@@ -87,7 +88,7 @@ function dangNhap() {
         
         // Nếu lỡ đang ở trang admin mà đăng nhập bằng user thì đẩy về trang chủ, ngược lại cập nhật header
         if (window.location.href.includes("admin.html")) {
-            window.location.href = "trangchu.html";
+            window.location.href = "../PAGES/trangchu.html";
         } else {
             kiemTraDangNhap();
         }
@@ -106,7 +107,7 @@ function dangXuat() {
     
     // Nếu đang ở trang admin thì văng về trang chủ, còn ở trang thường thì cập nhật header
     if (window.location.href.includes("admin.html")) {
-        window.location.href = "trangchu.html";
+        window.location.href = "../PAGES/trangchu.html";
     } else {
         kiemTraDangNhap();
     }
