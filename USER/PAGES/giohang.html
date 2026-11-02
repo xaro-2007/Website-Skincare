@@ -6,6 +6,14 @@
     <title>Jinie Skin</title>
     <link rel="stylesheet" href="../CSS/giohang.css">
     <link rel="stylesheet" href="../CSS/dangnhap.css">
+    
+    <!-- Thư viện EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("cm79tSBxf3uGrqvaQ"); // Public Key của bạn
+        })();
+    </script>
 </head>
 
 <body>
@@ -59,17 +67,13 @@
                 </div>
             </div>
 
-            <script src="../JS/dangnhap.js"></script>
             <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="cart-count">0</span>)</a>
         </div>
     </header>
+
     <main class="container">
-
         <h1>Giỏ hàng của bạn</h1>
-
-        <p class="description">
-            Kiểm tra sản phẩm và thông tin đơn hàng của bạn.
-        </p>
+        <p class="description">Kiểm tra sản phẩm và thông tin đơn hàng của bạn.</p>
 
         <div class="cart-layout">
             <section class="cart-products">
@@ -101,89 +105,70 @@
                 </button>
 
                 <a href="sanpham.html" class="continue-shopping">← Tiếp tục mua sắm</a>
-
             </aside>
         </div>
 
-        <!-- FORM ĐẶT HÀNG -->
+        <!-- FORM ĐẶT HÀNG (Giữ nguyên class CSS cũ của bạn + thêm thuộc tính name) -->
         <section id="checkout-form" class="checkout-form">
-
             <h2>Thông tin đặt hàng</h2>
-
             <p>Vui lòng điền đầy đủ thông tin để chúng tôi giao hàng cho bạn.</p>
 
             <form id="order-form">
-
                 <div class="form-group">
                     <label for="customer-name">Họ và tên *</label>
-                    <input
-                        type="text"
-                        id="customer-name"
-                        placeholder="Nhập họ và tên"
-                        required
-                    >
+                    <input type="text" id="customer-name" name="customer_name" placeholder="Nhập họ và tên" required>
                 </div>
 
                 <div class="form-group">
                     <label for="customer-phone">Số điện thoại *</label>
-                    <input
-                        type="tel"
-                        id="customer-phone"
-                        placeholder="Nhập số điện thoại"
-                        pattern="0[0-9]{9}"
-                        title="Vui lòng nhập số điện thoại gồm 10 chữ số, bắt đầu bằng số 0"
-                        required
-                    >
+                    <input type="tel" id="customer-phone" name="customer_phone" placeholder="Nhập số điện thoại" required>
                 </div>
 
                 <div class="form-group">
                     <label for="customer-email">Email</label>
-                    <input
-                        type="email"
-                        id="customer-email"
-                        placeholder="Nhập email của bạn"
-                    >
+                    <!-- QUAN TRỌNG: name="reply_to" khớp với cấu hình To Email bên EmailJS -->
+                    <input type="email" id="customer-email" name="reply_to" placeholder="Nhập email của bạn">
                 </div>
 
                 <div class="form-group">
                     <label for="customer-address">Địa chỉ nhận hàng *</label>
-                    <textarea
-                        id="customer-address"
-                        placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố"
-                        required
-                    ></textarea>
+                    <textarea id="customer-address" name="customer_address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="customer-note">Ghi chú đơn hàng</label>
-                    <textarea
-                        id="customer-note"
-                        placeholder="Ghi chú thêm nếu có..."
-                    ></textarea>
+                    <textarea id="customer-note" name="customer_note" placeholder="Ghi chú thêm nếu có..."></textarea>
                 </div>
 
-                <div class="form-buttons">
+                <!-- Các trường ẩn để truyền dữ liệu chi tiết đơn hàng sang EmailJS -->
+                <input type="hidden" id="order-id-input" name="order_id">
+                <input type="hidden" id="order-details-input" name="order_details">
+                <input type="hidden" id="order-total-input" name="order_total">
 
-                    <button type="submit" class="confirm-btn">
+                <div class="form-buttons">
+                    <button type="submit" id="submit-order-btn" class="confirm-btn">
                         Xác nhận đặt hàng
                     </button>
-
                     <button type="button" id="cancel-btn" class="cancel-btn">
                         Hủy
                     </button>
-
                 </div>
-
             </form>
-
         </section>
     </main>
 
     <footer class="footer">
         <p>© 2026 Julie Skin. Chăm sóc làn da của bạn.</p>
     </footer>
+    <div id="orderSuccessModal" class="modal">
+    <div class="modal-content success-modal-content">
+        <h3 class="success-modal-title">🎉 ĐẶT HÀNG THÀNH CÔNG!</h3>
+        <p id="orderSuccessMessage" class="success-modal-message"></p>
+        <button onclick="dongModal('orderSuccessModal')" class="success-modal-btn">OK</button>
+    </div>
+</div>
 
+    <script src="../JS/dangnhap.js"></script>
     <script src="../JS/giohang.js"></script>
-
 </body>
 </html>
