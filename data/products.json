@@ -1,0 +1,122 @@
+[   
+    { 
+        "id": 1,
+        "name": "Son Dưỡng Môi DHC Lip Cream Nhật Bản",
+        "price": 165000,
+        "oldPrice": 210000,
+        "stars": "★★★★★",
+        "reviews": 158,
+        "description": "Cấp ẩm sâu, giảm thâm và giúp đôi môi mềm mịn suốt cả ngày.",
+        "img": "../img/son-dhc.png",
+        "badge": "Bán chạy",
+        "badgeClass": "hot"
+    },
+    {
+        "id": 2,
+        "name": "Son Bóng Rom&nd Glasting Color Gloss",
+        "price": 180000,
+        "oldPrice": 225000,
+        "stars": "★★★★★",
+        "reviews": 142,
+        "description": "Chất son bóng trong trẻo, lên màu chuẩn đẹp và căng mọng tự nhiên.",
+        "img": "../img/son-romand.jpg",
+        "badge": "Mới",
+        "badgeClass": "new"
+    },
+    {
+        "id": 3,
+        "name": "Son Tint Bóng Amuse Jel-Fit Tint Hàn Quốc",
+        "price": 235000,
+        "oldPrice": 290000,
+        "stars": "★★★★☆",
+        "reviews": 96,
+        "description": "Thiết kế nhỏ xinh, chất son thạch bóng mượt và bám màu lâu trôi.",
+        "img": "../img/son-amuse.jpg",
+        "badge": "-20%",
+        "badgeClass": "sale"
+    },
+    {
+        "id": 4,
+        "name": "Kem Lót JuDyDoll",
+        "price": 190000,
+        "oldPrice": 240000,
+        "stars": "★★★★★",
+        "reviews": 115,
+        "description": "Che phủ mịn mướt",
+        "img": "../img/Kemlotjudydoll.png",
+        "badge": "Bán chạy",
+        "badgeClass": "hot"
+    },
+    {
+        "id": 5,
+        "name": "Nước tẩy trang bí CoCoon",
+        "price": 145000,
+        "oldPrice": 180000,
+        "stars": "★★★★☆",
+        "reviews": 78,
+        "description": "Làm dịu da, an toàn, lành tính",
+        "img": "../img/taytrangcocoon.png",
+        "badge": "Mới",
+        "badgeClass": "new"
+    },
+    {
+        "id": 6,
+        "name": "Sữa rửa mặt CeraVe",
+        "price": 210000,
+        "oldPrice": 260000,
+        "stars": "★★★★★",
+        "reviews": 84,
+        "description": "Loại bỏ dầu thừa, lớp trang điểm và bụi bẩn mà không làm phá vỡ hàng rào bảo vệ tự nhiên của da, không làm da bị bong tróc.",
+        "img": "../img/suaruamatCerave.png",
+        "badge": "-20%",
+        "badgeClass": "sale"
+    },
+    {
+        "id": 7,
+        "name"  : "Phấn nước TIRTIR Mask Fit Red Cushion",
+        "price": 450000,
+        "oldPrice": 550000,
+        "stars": "★★★★★",
+        "reviews": 130,
+        "description": "Che khuyết điểm tốt, kiềm dầu suốt 10 giờ và mang lại lớp nền căng bóng.",
+        "img": "../img/cushionTirtir.png",
+        "badge": "Bán chạy",
+        "badgeClass": "hot"
+    },
+    {
+        "id": 8,
+        "name": "Phấn nước rom&nd Bare Water Cushion",
+        "price": 360000,
+        "oldPrice": 420000,
+        "stars": "★★★★★",
+        "reviews": 210,
+        "description": "Cấp ẩm chuyên sâu (70% tinh chất), làm mát da, và tạo hiệu ứng căng bóng trong suốt.",
+        "img": "../img/cushionromend.png",
+        "badge": "Bán chạy",
+        "badgeClass": "hot"
+    },
+    {
+        "id": 9,
+        "name": "Phấn nước Cushion Cầu Vồng Xiêm La MISTINE",
+        "price": 390000,
+        "oldPrice": 450000,
+        "stars": "★★★★☆",
+        "reviews": 105,
+        "description": "Khả năng kiềm dầu vượt trội kéo dài từ 12 - 16 tiếng, chống nước và mồ hôi rất tốt, giữ lớp nền không bị xỉn màu.",
+        "img": "../img/phannuocmistin.png",
+        "badge": "Mới",
+        "badgeClass": "new"
+    },
+    {
+        "id": 10,
+        "name": "Phấn nước OHUI Ultimate Cover Denier Cushion 70D21 Minisize",
+        "price": 275000,
+        "oldPrice": 435000,
+        "stars": "★★★★★",
+        "reviews": 164,
+        "description": "Hiệu ứng mịn lì tự nhiên tựa vải satin, ráo mịn bên ngoài nhưng vẫn giữ độ ẩm mượt dễ chịu bên trong da.",
+        "img": "../img/phannuocOhui.png",
+        "badge": "-20%",
+        "badgeClass": "sale"
+    }
+]
