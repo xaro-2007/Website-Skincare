@@ -184,7 +184,7 @@ function saveCart(cart) {
         return true;
 
     } catch (error) {
-
+``
         console.error("Lỗi lưu giỏ hàng:", error);
 
         alert("Không thể lưu giỏ hàng!");
