@@ -1,58 +1,100 @@
-function moModal(id) {
-    document.getElementById(id).style.display = 'flex';
+function moModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "flex";
+    }
 }
 
-function dongModal(id) {
-    document.getElementById(id).style.display = 'none';
+function dongModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+    }
 }
 
-function chuyenForm(modalHienTai, modalCanMo) {
-    document.getElementById(modalHienTai).style.display = 'none';
-    document.getElementById(modalCanMo).style.display = 'flex';
+function chuyenForm(fromModalId, toModalId) {
+    dongModal(fromModalId);
+    moModal(toModalId);
 }
 
 function dangKy() {
-    let ten = document.getElementById('regName').value.trim();
-    let tk = document.getElementById('regUser').value.trim();
-    let mk = document.getElementById('regPass').value.trim();
+    const name = document.getElementById("regName").value.trim();
+    const user = document.getElementById("regUser").value.trim();
+    const pass = document.getElementById("regPass").value.trim();
 
-    if(!ten || !tk || !mk) {
-        alert("Vui lòng điền đầy đủ thông tin!");
+    if (!name || !user || !pass) {
+        alert("Vui lòng điền đầy đủ thông tin đăng ký!");
         return;
     }
 
-    localStorage.setItem("tenNguoiDung", ten);
-    localStorage.setItem("taikhoan", tk);
-    localStorage.setItem("matkhau", mk);
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const existing = accounts.find(acc => acc.user === user);
+    if (existing) {
+        alert("Tài khoản này đã tồn tại!");
+        return;
+    }
+
+    accounts.push({ name, user, pass });
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+
+    localStorage.setItem("currentUser", name);
+
+    alert("Đăng ký tài khoản thành công!");
     
+
     dongModal('registerModal');
-    hienThiTrangChinh(ten);
+    
+
+    kiemTraDangNhap();
 }
 
 function dangNhap() {
-    let tk = document.getElementById('logUser').value.trim();
-    let mk = document.getElementById('logPass').value.trim();
+    const user = document.getElementById("logUser").value.trim();
+    const pass = document.getElementById("logPass").value.trim();
 
-    if(!tk || !mk) {
+    if (!user || !pass) {
         alert("Vui lòng nhập tài khoản và mật khẩu!");
         return;
     }
 
-    let ten = localStorage.getItem("tenNguoiDung") ? localStorage.getItem("tenNguoiDung") : tk;
+    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const foundUser = accounts.find(acc => acc.user === user && acc.pass === pass);
 
-    dongModal('loginModal');
-    hienThiTrangChinh(ten);
-}
+    if (foundUser || (user === "admin" && pass === "123")) {
+        const displayName = foundUser ? foundUser.name : user;
+        
+        localStorage.setItem("currentUser", displayName);
 
-function hienThiTrangChinh(ten) {
-    document.getElementById('authButtons').style.display = 'none';
-    document.getElementById('tenHienThi').innerText = ten;
-    document.getElementById('userDashboard').style.display = 'flex';
+        alert("Đăng nhập thành công!");
+        dongModal('loginModal');
+        kiemTraDangNhap();
+    } else {
+        alert("Sai tài khoản hoặc mật khẩu!");
+    }
 }
 
 function dangXuat() {
-    document.getElementById('userDashboard').style.display = 'none';
-    document.getElementById('authButtons').style.display = 'block';
-    
-    document.querySelectorAll('input').forEach(input => input.value = '');
+    localStorage.removeItem("currentUser");
+    alert("Đã đăng xuất!");
+    kiemTraDangNhap();
 }
+
+function kiemTraDangNhap() {
+    const currentUser = localStorage.getItem("currentUser");
+    const authButtons = document.getElementById("authButtons");
+    const userDashboard = document.getElementById("userDashboard");
+    const tenHienThi = document.getElementById("tenHienThi");
+
+    if (currentUser) {
+        if (authButtons) authButtons.style.display = "none";
+        if (userDashboard) userDashboard.style.display = "flex";
+        if (tenHienThi) tenHienThi.textContent = currentUser;
+    } else {
+        if (authButtons) authButtons.style.display = "block";
+        if (userDashboard) userDashboard.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    kiemTraDangNhap();
+});

@@ -51,7 +51,7 @@
         "price": 320000,
         "stock": 20,
         "description": "Bổ sung dưỡng chất cho quy trình dưỡng da.",
-        "img": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTugxOxi22JIj3gWWtx95WCHmFkwzCYmGk1KCM83D5txw&s=10",
         "badge": "Bán chạy"
     },
     {
@@ -75,6 +75,17 @@
         "description": "Giúp da mềm mại và đủ ẩm.",
         "img": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80",
         "badge": "Yêu thích"
+    },
+    {
+        "id": 8,
+        "name": "Kem dưỡng ban đêm",
+        "category": "moisturizer",
+        "categoryName": "Kem dưỡng",
+        "price": 390000,
+        "stock": 10,
+        "description": "Bổ sung bước dưỡng ẩm vào buổi tối.",
+        "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+        "badge": ""
     },
     {
         "id": 8,
