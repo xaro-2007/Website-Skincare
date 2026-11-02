@@ -81,6 +81,10 @@ nav .chon {
     border-bottom: 3px solid #ff7699;
 }
 
+.chon {
+  scroll-behavior: smooth;
+}
+
 
 /* =========================
    3. BANNER

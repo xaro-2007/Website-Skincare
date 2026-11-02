@@ -97,6 +97,10 @@ img {
     color: #c95778;
 }
 
+.chon {
+  scroll-behavior: smooth;
+}
+
 /* ===== GIỚI THIỆU ===== */
 .about-section {
     display: grid;

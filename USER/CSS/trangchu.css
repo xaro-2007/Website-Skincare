@@ -37,6 +37,11 @@ header {
     object-fit: cover;
 }
 
+.chon {
+  scroll-behavior: smooth;
+}
+
+
 
 .brand-text {
     font-weight: bold;

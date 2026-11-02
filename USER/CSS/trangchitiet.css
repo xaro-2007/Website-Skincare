@@ -50,6 +50,10 @@ body {
     color: #bd7b82;
 }
 
+.chon {
+  scroll-behavior: smooth;
+}
+
 /* MAIN */
 
 .container {

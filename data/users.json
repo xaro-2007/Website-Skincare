@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Quản trị viên",
+        "username": "admin",
+        "email": "admin@julieskin.vn",
+        "phone": "0328414070",
+        "role": "admin",
+        "status": "active",
+        "createdAt": "2026-01-15"
+    },
+    {
+        "id": 2,
+        "name": "Nguyễn Thu Linh",
+        "username": "linhnguyen",
+        "email": "linh.nguyen@gmail.com",
+        "phone": "0905123456",
+        "role": "user",
+        "status": "active",
+        "createdAt": "2026-02-20"
+    },
+    {
+        "id": 3,
+        "name": "Trần Minh Anh",
+        "username": "minhanh",
+        "email": "minhanh.tran@gmail.com",
+        "phone": "0912345678",
+        "role": "user",
+        "status": "active",
+        "createdAt": "2026-03-05"
+    },
+    {
+        "id": 4,
+        "name": "Lê Hoàng Yến",
+        "username": "hoangyen",
+        "email": "hoangyen.le@gmail.com",
+        "phone": "0987654321",
+        "role": "user",
+        "status": "locked",
+        "createdAt": "2026-03-18"
+    }
+]
