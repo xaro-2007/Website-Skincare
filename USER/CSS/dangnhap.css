@@ -236,3 +236,82 @@ header .header-right .gio-hang:hover {
         gap: 10px 18px;
     }
 }
+
+
+/* ==========================================
+   FOOTER ĐỒNG BỘ CHO TẤT CẢ CÁC TRANG
+   ========================================== */
+footer {
+    color: #ffffff;
+    background-color: #302b31;
+    margin-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer .noiDung,
+.footer.noiDung {
+    padding: 45px 8%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 30px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+footer h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+footer h3 span {
+    color: #ff7699;
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #dddddd;
+    line-height: 1.6;
+}
+
+footer a {
+    display: block;
+    margin: 8px 0;
+    color: #dddddd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #ff7699;
+}
+
+footer .banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #4a444c;
+    color: #bbbbbb;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    footer .noiDung,
+    .footer.noiDung {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer .noiDung,
+    .footer.noiDung {
+        grid-template-columns: 1fr;
+        padding: 35px 5%;
+        gap: 22px;
+    }
+}

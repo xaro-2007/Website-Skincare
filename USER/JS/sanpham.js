@@ -1,9 +1,8 @@
-
 // ==========================================
-// 1. LẤY CÁC PHẦN TỬ HTML
+// 1. DANH SÁCH SẢN PHẨM VÀ PHẦN TỬ HTML
 // ==========================================
 
-const products = [
+let products = [
     {
         id: 1,
         name: "Son Dưỡng Môi DHC Lip Cream Nhật Bản",
@@ -47,7 +46,7 @@ const products = [
         oldPrice: 240000,
         stars: "★★★★★",
         reviews: 115,
-        description: "Che phủ mịn mướt",
+        description: "Che phủ mịn mướt, hỗ trợ lớp nền lâu trôi.",
         img: "../img/Kemlotjudydoll.png",
         badge: "Bán chạy",
         badgeClass: "hot"
@@ -59,7 +58,7 @@ const products = [
         oldPrice: 180000,
         stars: "★★★★☆",
         reviews: 78,
-        description: "Làm dịu da, an toàn, lành tính",
+        description: "Làm dịu da, làm sạch sâu, an toàn và lành tính.",
         img: "../img/taytrangcocoon.png",
         badge: "Mới",
         badgeClass: "new"
@@ -120,11 +119,43 @@ const products = [
         stars: "★★★★★",
         reviews: 164,
         description: "Hiệu ứng mịn lì tự nhiên tựa vải satin, ráo mịn bên ngoài nhưng vẫn giữ độ ẩm mượt dễ chịu bên trong da.",
-        img: "../img/phannuocOhui.png",
+        img: "../img/phannuocOHUI.png",
         badge: "-20%",
         badgeClass: "sale"
     }
 ];
+
+// Đồng bộ sản phẩm từ localStorage (do Admin quản lý) hoặc từ file data/products.json
+async function loadProductsData() {
+    try {
+        const stored = JSON.parse(localStorage.getItem("julie_products"));
+        if (Array.isArray(stored) && stored.length > 0) {
+            products = stored;
+        }
+    } catch (error) {
+        console.error("Không đọc được julie_products:", error);
+    }
+
+    if (location.protocol !== "file:") {
+        try {
+            const response = await fetch("../../data/products.json", { cache: "no-store" });
+            if (response.ok) {
+                const fileProducts = await response.json();
+                if (Array.isArray(fileProducts) && fileProducts.length > 0) {
+                    const signature = JSON.stringify(fileProducts);
+                    const savedSignature = localStorage.getItem("julie_products_source");
+                    if (!localStorage.getItem("julie_products") || savedSignature !== signature) {
+                        products = fileProducts;
+                        localStorage.setItem("julie_products", JSON.stringify(fileProducts));
+                        localStorage.setItem("julie_products_source", signature);
+                    }
+                }
+            }
+        } catch (error) {
+            // Dùng dữ liệu có sẵn nếu không fetch được
+        }
+    }
+}
 
 const productList = document.getElementById("product-list");
 const searchInput = document.getElementById("search-input");
@@ -144,7 +175,7 @@ let activeTag = "all";
 // ==========================================
 
 function formatMoney(price) {
-    return price.toLocaleString("vi-VN") + " ₫";
+    return Number(price).toLocaleString("vi-VN") + " ₫";
 }
 
 
@@ -237,7 +268,7 @@ function renderProducts(productArray) {
         <article class="product-card">
             ${
                 product.badge
-                    ? `<span class="badge ${product.badgeClass}">${product.badge}</span>`
+                    ? `<span class="badge ${product.badgeClass || "hot"}">${product.badge}</span>`
                     : ""
             }
             <div class="product-img-wrap" onclick="openQuickView(${product.id})">
@@ -251,7 +282,7 @@ function renderProducts(productArray) {
                 ${product.name}
             </h4>
             <div class="stars">
-                ${product.stars} <span>(${product.reviews})</span>
+                ${product.stars || "★★★★★"} <span>(${product.reviews || 50})</span>
             </div>
             <div class="price">
                 <span class="current-price">${formatMoney(product.price)}</span>
@@ -295,7 +326,8 @@ function filterProducts() {
     const selectedCategory = categoryFilter ? categoryFilter.value : "all";
 
     let filteredProducts = products.filter(product => {
-        const nameLower = product.name.toLowerCase();
+        const nameLower = String(product.name || "").toLowerCase();
+        const badgeLower = String(product.badge || "").toLowerCase();
 
         const matchesName = nameLower.includes(keyword);
 
@@ -308,7 +340,7 @@ function filterProducts() {
             const tagKey = activeTag.toLowerCase();
             matchesTag =
                 nameLower.includes(tagKey) ||
-                product.badge.toLowerCase().includes(tagKey);
+                badgeLower.includes(tagKey);
         }
 
         return matchesName && matchesCategory && matchesTag;
@@ -337,7 +369,7 @@ function filterProducts() {
 function addToCart(productId) {
 
     const product = products.find(item => {
-        return item.id === Number(productId);
+        return Number(item.id) === Number(productId);
     });
     if (!product) {
 
@@ -350,7 +382,7 @@ function addToCart(productId) {
     const cart = getCart();
 
     const existingProduct = cart.find(item => {
-        return Number(item.id) === product.id;
+        return Number(item.id) === Number(product.id);
     });
     if (existingProduct) {
         existingProduct.quantity += 1;
@@ -396,7 +428,7 @@ const modalBodyContent = document.getElementById("modal-body-content");
 const closeModalBtn = document.getElementById("close-modal");
 
 function openQuickView(productId) {
-    const product = products.find(item => item.id === Number(productId));
+    const product = products.find(item => Number(item.id) === Number(productId));
     if (!product || !quickViewModal) return;
 
     modalBodyContent.innerHTML = `
@@ -404,10 +436,14 @@ function openQuickView(productId) {
             <img src="${product.img}" alt="${product.name}">
         </div>
         <div class="modal-info">
-            <span class="badge ${product.badgeClass}">${product.badge}</span>
+            ${
+                product.badge
+                    ? `<span class="badge ${product.badgeClass || "hot"}">${product.badge}</span>`
+                    : ""
+            }
             <h3>${product.name}</h3>
-            <div class="stars">${product.stars} <span>(${product.reviews} đánh giá)</span></div>
-            <p class="modal-desc">${product.description}</p>
+            <div class="stars">${product.stars || "★★★★★"} <span>(${product.reviews || 50} đánh giá)</span></div>
+            <p class="modal-desc">${product.description || ""}</p>
             <div class="price">
                 <span class="current-price">${formatMoney(product.price)}</span>
                 ${
@@ -450,7 +486,7 @@ if (categoryFilter) {
     categoryFilter.addEventListener("change", filterProducts);
 }
 
-    searchInput.addEventListener("input", filterProducts);
+searchInput.addEventListener("input", filterProducts);
 
 for (let i = 0; i < tagButtons.length; i++) {
     tagButtons[i].addEventListener("click", function () {
@@ -479,9 +515,8 @@ resetButton.addEventListener("click", function() {
     filterProducts();
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-
+document.addEventListener("DOMContentLoaded", async function() {
+    await loadProductsData();
     filterProducts();
-
     updateCartCount();
 });

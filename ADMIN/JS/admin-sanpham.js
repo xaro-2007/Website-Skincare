@@ -43,13 +43,15 @@ async function initProducts() {
             tableBody.innerHTML = filtered.map(function (product) {
                 const id = escapeHTML(product.id);
                 const name = escapeHTML(product.name);
-                const image = escapeHTML(product.img);
+                const image = escapeHTML(resolveAdminImage(product.img));
                 const description = escapeHTML(product.description);
                 const categoryName = escapeHTML(
                     product.categoryName ||
                     CATEGORY_NAMES[product.category] ||
-                    product.category
+                    product.category ||
+                    "Mỹ phẩm"
                 );
+                const stock = product.stock !== undefined ? escapeHTML(product.stock) : "20";
 
                 return (
                     "<tr>" +
@@ -67,7 +69,7 @@ async function initProducts() {
                         "</td>" +
                         "<td>" + categoryName + "</td>" +
                         "<td>" + formatMoney(product.price) + "</td>" +
-                        "<td>" + escapeHTML(product.stock) + "</td>" +
+                        "<td>" + stock + "</td>" +
                         "<td>" +
                             '<button class="small" type="button" data-action="edit"' +
                                 ' data-id="' + id + '">Sửa</button> ' +
@@ -83,7 +85,7 @@ async function initProducts() {
         let totalPrice = 0;
 
         products.forEach(function (product) {
-            if (categories.indexOf(product.category) === -1) {
+            if (product.category && categories.indexOf(product.category) === -1) {
                 categories.push(product.category);
             }
 
@@ -104,7 +106,7 @@ async function initProducts() {
         form.reset();
 
         document.getElementById("product-id").value = "";
-        document.getElementById("product-stock").value = "0";
+        document.getElementById("product-stock").value = "20";
         dialogTitle.textContent = "Thêm sản phẩm";
 
         if (id !== "") {
@@ -119,10 +121,10 @@ async function initProducts() {
 
             document.getElementById("product-id").value = product.id;
             document.getElementById("product-name").value = product.name;
-            document.getElementById("product-category").value = product.category;
+            document.getElementById("product-category").value = product.category || "son";
             document.getElementById("product-price").value = product.price;
             document.getElementById("product-stock").value =
-                product.stock !== undefined ? product.stock : 0;
+                product.stock !== undefined ? product.stock : 20;
             document.getElementById("product-image").value = product.img;
             document.getElementById("product-description").value =
                 product.description || "";
@@ -146,19 +148,6 @@ async function initProducts() {
 
     document.getElementById("close-dialog").addEventListener("click", closeDialog);
     document.getElementById("cancel-dialog").addEventListener("click", closeDialog);
-
-    const addButton = document.getElementById("add-product-btn");
-    const exportButton = document.createElement("button");
-
-    exportButton.type = "button";
-    exportButton.className = "small";
-    exportButton.style.marginRight = "8px";
-
-    exportButton.addEventListener("click", function () {
-        downloadJSON("products.json", getProducts());
-    });
-
-    addButton.parentNode.insertBefore(exportButton, addButton);
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -198,9 +187,12 @@ async function initProducts() {
                 categoryName: CATEGORY_NAMES[category],
                 price: price,
                 stock: stock,
+                stars: "★★★★★",
+                reviews: 50,
                 img: image,
                 description: description,
-                badge: badge
+                badge: badge,
+                badgeClass: "new"
             });
 
             addActivity('Thêm sản phẩm "' + name + '"');

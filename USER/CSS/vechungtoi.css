@@ -251,41 +251,37 @@ img {
 }
 
 /* ===== FOOTER ===== */
+footer {
+    color: white;
+    background-color: #302b31;
+    margin-top: 50px;
+}
 .footer {
-    background-color: #30313a;
-    color: #fff;
-    text-align: center;
-    padding: 30px 8%;
-}
-
-.footer-logo {
-    display: inline-block;
-    color: #f18aa6;
-    font-size: 23px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 25px;
-    margin-bottom: 20px;
+    padding: 45px 8%;
+    text-align: left;
 }
-
-.footer-links a {
-    font-size: 14px;
-    transition: color 0.3s;
+.footer a {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #dddddd;
+    text-decoration: none;
 }
-
-.footer-links a:hover {
-    color: #f18aa6;
+.footer a:hover {
+    color: #ff7699;
 }
-
-.footer p {
-    color: #ccc;
-    font-size: 13px;
+.footer h3 span {
+    color: #ff7699;
+}
+.banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #555555;
+    color: #bbbbbb;
+    text-align: center;
 }
 
 /* ===== TABLET ===== */
@@ -370,7 +366,5 @@ img {
         height: 220px;
     }
 
-    .footer-links {
-        gap: 12px 18px;
-    }
+    
 }
