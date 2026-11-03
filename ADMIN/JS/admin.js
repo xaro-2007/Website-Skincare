@@ -100,5 +100,5 @@ async function initDashboard() {
 initDashboard();
 // Đăng xuất Admin và quay về trang chủ User
 function logoutAdmin() {
-    window.location.href = "../../USER/PAGES/trangchu.html";
+    window.location.href = "../../USER/pages/trangchu.html";
 }
