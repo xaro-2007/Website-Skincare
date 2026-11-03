@@ -440,3 +440,87 @@ body {
 .success-modal-btn:hover {
     background-color: #e02e55;
 }
+
+/* Form đặt hàng */
+.checkout-form {
+    display: none;
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Khi nhấn nút đặt hàng */
+.checkout-form.show {
+    display: block;
+}
+
+.checkout-form h2 {
+    text-align: center;
+    color: #b76e79;
+    margin-bottom: 10px;
+}
+
+.checkout-form > p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.form-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#cancel-btn {
+    background-color: #ddd;
+    color: #333;
+}
+
+#submit-order-btn {
+    background-color: #b76e79;
+    color: white;
+}
+
+#submit-order-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
