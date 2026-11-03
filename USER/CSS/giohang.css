@@ -228,12 +228,37 @@ body {
 }
 
 /* FOOTER */
-.footer {
-    text-align: center;
-    padding: 25px;
-    background-color: white;
-    color: #777;
+footer {
+    color: white;
+    background-color: #302b31;
     margin-top: 50px;
+}
+.footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 25px;
+    padding: 45px 8%;
+    text-align: left;
+}
+.footer a {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #dddddd;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #ff7699;
+}
+.footer h3 span {
+    color: #ff7699;
+}
+.banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #555555;
+    color: #bbbbbb;
+    text-align: center;
 }
 
 /* RESPONSIVE CHO ĐIỆN THOẠI */
