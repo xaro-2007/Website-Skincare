@@ -1,4 +1,5 @@
 const PRODUCTS_KEY = "julie_products";
+const PRODUCTS_SOURCE_KEY = "julie_products_source";
 const USERS_KEY = "julie_users";
 const ORDERS_KEY = "julie_orders";
 const ACTIVITY_KEY = "julie_activity";
@@ -7,12 +8,15 @@ const ACTIVITY_KEY = "julie_activity";
 const CONTACT_KEY = "lienHeJulie";
 
 const CATEGORY_NAMES = {
+    son: "Son môi",
+    cushion: "Phấn nước",
     cleanser: "Sữa rửa mặt",
     toner: "Toner",
     serum: "Serum",
     moisturizer: "Kem dưỡng",
     primer: "Kem lót",
 };
+
 
 // Đọc dữ liệu JSON đã lưu trong localStorage.
 function readStorage(key, fallback) {
@@ -42,7 +46,7 @@ async function fetchJSON(fileName) {
     }
 
     try {
-        const response = await fetch("../../data/" + fileName);
+        const response = await fetch("../../data/" + fileName, { cache: "no-store" });
 
         if (!response.ok) {
             return null;
@@ -54,14 +58,62 @@ async function fetchJSON(fileName) {
     }
 }
 
-// Nạp dữ liệu từ JSON vào localStorage trong lần đầu mở trang.
-async function prepareAdminData() {
-    if (readStorage(PRODUCTS_KEY, null) === null) {
-        const products = await fetchJSON("products.json");
+// Tự động suy luận danh mục nếu sản phẩm trong JSON chưa có trường category
+function normalizeProductList(list) {
+    if (!Array.isArray(list)) return [];
 
-        if (Array.isArray(products)) {
-            saveStorage(PRODUCTS_KEY, products);
+    return list.map(function (item) {
+        const nameLower = String(item.name || "").toLowerCase();
+        let category = item.category || "";
+
+        if (!category) {
+            if (nameLower.includes("son")) category = "son";
+            else if (nameLower.includes("phấn nước") || nameLower.includes("cushion")) category = "cushion";
+            else if (nameLower.includes("sữa rửa mặt")) category = "cleanser";
+            else if (nameLower.includes("tẩy trang")) category = "taytrang";
+            else if (nameLower.includes("kem lót")) category = "kemlot";
+            else category = "son";
         }
+
+        return {
+            id: item.id,
+            name: item.name || "",
+            category: category,
+            categoryName: item.categoryName || CATEGORY_NAMES[category] || category,
+            price: Number(item.price) || 0,
+            oldPrice: item.oldPrice ? Number(item.oldPrice) : 0,
+            stock: item.stock !== undefined ? Number(item.stock) : 20,
+            stars: item.stars || "★★★★★",
+            reviews: item.reviews !== undefined ? Number(item.reviews) : 50,
+            description: item.description || "",
+            img: item.img || "",
+            badge: item.badge || "",
+            badgeClass: item.badgeClass || "hot"
+        };
+    });
+}
+
+// Chuyển đường dẫn ảnh "../img/..." sang "../../USER/img/..." để hiển thị đúng trong trang Admin
+function resolveAdminImage(imgPath) {
+    if (!imgPath) return "";
+    if (imgPath.indexOf("../img/") === 0) {
+        return "../../USER/" + imgPath.slice(3);
+    }
+    return imgPath;
+}
+
+// Nạp dữ liệu từ JSON vào localStorage.
+// Nếu file data/products.json thay đổi so với lần trước thì tự động cập nhật mới!
+async function prepareAdminData() {
+    const fileProducts = await fetchJSON("products.json");
+    const sourceProducts = Array.isArray(fileProducts) ? fileProducts : DEFAULT_PRODUCTS;
+    const normalized = normalizeProductList(sourceProducts);
+    const sourceSignature = JSON.stringify(normalized);
+    const savedSignature = localStorage.getItem(PRODUCTS_SOURCE_KEY);
+
+    if (readStorage(PRODUCTS_KEY, null) === null || savedSignature !== sourceSignature) {
+        saveStorage(PRODUCTS_KEY, normalized);
+        localStorage.setItem(PRODUCTS_SOURCE_KEY, sourceSignature);
     }
 
     if (readStorage(USERS_KEY, null) === null) {
@@ -223,4 +275,3 @@ function buildBarChart(title, items) {
         "</section>"
     );
 }
-
