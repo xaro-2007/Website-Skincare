@@ -10,7 +10,8 @@ const CATEGORY_NAMES = {
     cleanser: "Sữa rửa mặt",
     toner: "Toner",
     serum: "Serum",
-    moisturizer: "Kem dưỡng"
+    moisturizer: "Kem dưỡng",
+    primer: "Kem lót",
 };
 
 // Đọc dữ liệu JSON đã lưu trong localStorage.
