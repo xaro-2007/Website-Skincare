@@ -1,0 +1,254 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffafb;
+    color: #333333;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-banner {
+    background-color: #ffe9ef;
+    text-align: center;
+    padding: 50px 8%;
+}
+.banner-tag {
+    color: #d84b73;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.blog-banner h1 {
+    font-size: 34px;
+    color: #2b2b2b;
+    margin-bottom: 10px;
+}
+.blog-banner p {
+    color: #666666;
+    font-size: 16px;
+}
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.featured-post {
+    background-color: #ffffff;
+    border: 1px solid #f2dce2;
+    border-radius: 16px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.featured-post img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    background-color: #fff5f8;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.post-tag {
+    display: inline-block;
+    background-color: #ff7699;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.featured-content h2 {
+    font-size: 24px;
+    color: #2b2b2b;
+    margin-bottom: 8px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #888888;
+    margin-bottom: 12px;
+}
+
+.featured-content p {
+    color: #555555;
+    margin-bottom: 16px;
+}
+
+.btn-read {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #ff7699;
+    color: #ffffff;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-read:hover {
+    background-color: #e05c7f;
+}
+
+/* 5. DANH SÁCH BÀI VIẾT  */
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.section-title h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+.section-title p {
+    color: #777777;
+}
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+}
+.blog-card {
+    background-color: #ffffff;
+    border: 1px solid #f0e2e6;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+.blog-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: contain;
+    background-color: #fff6f8;
+    padding: 15px;
+}
+.blog-info {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.category-tag {
+    color: #ff7699;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.blog-info h3 {
+    font-size: 17px;
+    color: #2b2b2b;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.blog-info p {
+    font-size: 14px;
+    color: #666666;
+}
+
+.tips-box {
+    background-color: #fff0f4;
+    border-radius: 16px;
+    padding: 35px;
+    text-align: center;
+}
+.tips-box h2 {
+    font-size: 24px;
+    color: #d84b73;
+    margin-bottom: 22px;
+}
+.tips-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.tip-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #f7d6e0;
+    text-align: left;
+}
+.tip-item b {
+    display: block;
+    color: #ff7699;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.tip-item p {
+    font-size: 14px;
+    color: #555555;
+}
+footer {
+    color: white;
+    background-color: #302b31;
+    margin-top: 50px;
+}
+.footer {
+    padding: 45px 8%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 25px;
+}
+.footer h3 {
+    margin-bottom: 10px;
+}
+.footer h3 span {
+    color: #ff7699;
+}
+.footer a {
+    display: block;
+    margin: 7px 0;
+    color: #dddddd;
+}
+.footer p {
+    margin: 6px 0;
+    color: #dddddd;
+}
+.banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #555555;
+    color: #bbbbbb;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+    .blog-grid,
+    .tips-list {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .blog-grid,
+    .tips-list,
+    .footer {
+        grid-template-columns: 1fr;
+    }
+}
+
