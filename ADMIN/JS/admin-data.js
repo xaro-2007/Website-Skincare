@@ -1,7 +1,7 @@
 const PRODUCTS_KEY = "julie_products";
 const PRODUCTS_SOURCE_KEY = "julie_products_source";
 const USERS_KEY = "julie_users";
-const ORDERS_KEY = "julie_orders";
+const ORDERS_KEY = "orders";
 const ACTIVITY_KEY = "julie_activity";
 
 // Key tin nhắn dùng chung với trang liên hệ của USER.
