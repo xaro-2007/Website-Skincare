@@ -25,7 +25,16 @@ async function initOrders() {
 
     // Lấy tên khách hàng từ đơn hàng.
     function getCustomerName(order) {
+        if (order.customer && typeof order.customer === "object") {
+            return order.customer.name || "Khách lẻ";
+        }
+
         return order.customer || order.customerName || order.name || "Khách lẻ";
+    }
+
+    // Lấy ngày đặt hàng từ đơn hàng.
+    function getOrderDate(order) {
+        return order.orderDate || order.date || order.createdAt || "";
     }
 
     // Hiển thị thống kê và danh sách đơn hàng đã lọc.
@@ -91,7 +100,7 @@ async function initOrders() {
                     "<tr>" +
                         "<td>" + id + "</td>" +
                         "<td>" + escapeHTML(getCustomerName(order)) + "</td>" +
-                        "<td>" + escapeHTML(formatDate(order.date || order.createdAt)) + "</td>" +
+                        "<td>" + escapeHTML(formatDate(getOrderDate(order))) + "</td>" +
                         "<td>" + formatMoney(getOrderTotal(order)) + "</td>" +
                         "<td>" +
                             '<select class="order-status-select" data-id="' + id + '">' +
@@ -119,7 +128,18 @@ async function initOrders() {
             return;
         }
 
-        const items = Array.isArray(order.items) ? order.items : [];
+        const customer = order.customer && typeof order.customer === "object"
+            ? order.customer
+            : {};
+
+        let items = [];
+
+        if (Array.isArray(order.products)) {
+            items = order.products;
+        } else if (Array.isArray(order.items)) {
+            items = order.items;
+        }
+
         let itemsHTML = "<p>Đơn hàng chưa có chi tiết sản phẩm.</p>";
 
         if (items.length > 0) {
@@ -155,9 +175,11 @@ async function initOrders() {
             '<div class="order-detail-info">' +
                 "<h3>Đơn " + escapeHTML(order.id) + "</h3>" +
                 "<p>Khách hàng: " + escapeHTML(getCustomerName(order)) + "</p>" +
-                "<p>Số điện thoại: " + escapeHTML(order.phone || "Chưa có") + "</p>" +
-                "<p>Địa chỉ: " + escapeHTML(order.address || "Chưa có") + "</p>" +
-                "<p>Ngày đặt: " + escapeHTML(formatDate(order.date || order.createdAt)) + "</p>" +
+                "<p>Số điện thoại: " + escapeHTML(customer.phone || order.phone || "Chưa có") + "</p>" +
+                "<p>Email: " + escapeHTML(customer.email || "Chưa có") + "</p>" +
+                "<p>Địa chỉ: " + escapeHTML(customer.address || order.address || "Chưa có") + "</p>" +
+                "<p>Ghi chú: " + escapeHTML(customer.note || "Không có") + "</p>" +
+                "<p>Ngày đặt: " + escapeHTML(formatDate(getOrderDate(order))) + "</p>" +
                 "<p>Tổng tiền: " + formatMoney(getOrderTotal(order)) + "</p>" +
                 "<p>Trạng thái: " + escapeHTML(order.status || "Chờ xác nhận") + "</p>" +
             "</div>" +

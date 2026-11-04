@@ -61,18 +61,14 @@
     },
     {
         "id": 5,
-        "name": "Nước tẩy trang bí CoCoon",
-        "category": "taytrang",
-        "categoryName": "Nước tẩy trang",
-        "price": 145000,
-        "oldPrice": 180000,
-        "stock": 40,
-        "stars": "★★★★☆",
-        "reviews": 78,
-        "description": "Làm dịu da, làm sạch sâu, an toàn và lành tính.",
-        "img": "../img/taytrangcocoon.png",
-        "badge": "Mới",
-        "badgeClass": "new"
+        "name": "Serum dưỡng da",
+        "category": "serum",
+        "categoryName": "Serum",
+        "price": 320000,
+        "stock": 20,
+        "description": "Bổ sung dưỡng chất cho quy trình dưỡng da.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTugxOxi22JIj3gWWtx95WCHmFkwzCYmGk1KCM83D5txw&s=10",
+        "badge": "Bán chạy"
     },
     {
         "id": 6,
@@ -125,29 +121,21 @@
         "category": "cushion",
         "categoryName": "Phấn nước",
         "price": 390000,
-        "oldPrice": 450000,
-        "stock": 15,
-        "stars": "★★★★☆",
-        "reviews": 105,
-        "description": "Khả năng kiềm dầu vượt trội kéo dài từ 12 - 16 tiếng, chống nước và mồ hôi rất tốt.",
-        "img": "../img/phannuocmistin.png",
-        "badge": "Mới",
-        "badgeClass": "new"
+        "stock": 10,
+        "description": "Bổ sung bước dưỡng ẩm vào buổi tối.",
+        "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+        "badge": ""
     },
     {
-        "id": 10,
-        "name": "Phấn nước OHUI Ultimate Cover Denier Cushion 70D21 Minisize",
-        "category": "cushion",
-        "categoryName": "Phấn nước",
-        "price": 275000,
-        "oldPrice": 435000,
-        "stock": 12,
-        "stars": "★★★★★",
-        "reviews": 164,
-        "description": "Hiệu ứng mịn lì tự nhiên tựa vải satin, ráo mịn bên ngoài nhưng vẫn giữ độ ẩm mượt bên trong da.",
-        "img": "../img/phannuocOHUI.png",
-        "badge": "-20%",
-        "badgeClass": "sale"
+        "id": 9,
+        "name": "Kem dưỡng ban đêm",
+        "category": "moisturizer",
+        "categoryName": "Kem dưỡng",
+        "price": 390000,
+        "stock": 10,
+        "description": "Bổ sung bước dưỡng ẩm vào buổi tối.",
+        "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+        "badge": ""
     }
 ]
 
