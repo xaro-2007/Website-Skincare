@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý sản phẩm - Julie Skin</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
+    
     <aside class="sidebar">
         <h2>Julie<span>Skin</span></h2>
         <p class="label">ADMIN PANEL</p>
@@ -16,13 +16,12 @@
             <a href="admin.html">Tổng quan</a>
             <a href="donhang.html">Đơn hàng</a>
             <a href="sanpham.html" class="active">Sản phẩm</a>
-            <a href="thongke.html">Thống kê</a>
+            <a href="nguoidung.html">Người dùng</a>
         </nav>
 
-        <button class="logout" type="button"
-            onclick="alert('Chức năng đăng xuất cần được kết nối sau.')">
+        <button class="logout" onclick="logoutAdmin()">
             Đăng xuất
-        </button>
+        </button>    
     </aside>
 
     <main class="content">
@@ -69,10 +68,11 @@
 
                 <select id="category-filter" aria-label="Lọc danh mục">
                     <option value="all">Tất cả danh mục</option>
+                    <option value="son">Son môi</option>
+                    <option value="cushion">Phấn nước</option>
                     <option value="cleanser">Sữa rửa mặt</option>
-                    <option value="toner">Toner</option>
-                    <option value="serum">Serum</option>
-                    <option value="moisturizer">Kem dưỡng</option>
+                    <option value="taytrang">Nước tẩy trang</option>
+                    <option value="kemlot">Kem lót</option>
                 </select>
             </div>
 
@@ -97,9 +97,6 @@
                 Chưa có sản phẩm phù hợp.
             </p>
 
-            <p class="note">
-                Dữ liệu demo được lưu trong trình duyệt hiện tại.
-            </p>
         </section>
     </main>
 
@@ -125,15 +122,16 @@
                 type="text"
                 required
                 maxlength="100"
-                placeholder="Ví dụ: Toner cấp ẩm"
+                placeholder="Ví dụ: Son Dưỡng Môi DHC"
             >
 
             <label for="product-category">Danh mục *</label>
             <select id="product-category" required>
+                <option value="son">Son môi</option>
+                <option value="cushion">Phấn nước</option>
                 <option value="cleanser">Sữa rửa mặt</option>
-                <option value="toner">Toner</option>
-                <option value="serum">Serum</option>
-                <option value="moisturizer">Kem dưỡng</option>
+                <option value="taytrang">Nước tẩy trang</option>
+                <option value="kemlot">Kem lót</option>
             </select>
 
             <label for="product-price">Giá bán (VNĐ) *</label>
@@ -143,7 +141,7 @@
                 min="0"
                 step="1000"
                 required
-                placeholder="Ví dụ: 220000"
+                placeholder="Ví dụ: 165000"
             >
 
             <label for="product-stock">Số lượng tồn kho *</label>
@@ -153,15 +151,15 @@
                 min="0"
                 step="1"
                 required
-                value="0"
+                value="20"
             >
 
             <label for="product-image">Đường dẫn hình ảnh *</label>
             <input
                 id="product-image"
-                type="url"
+                type="text"
                 required
-                placeholder="https://..."
+                placeholder="../img/son-dhc.png hoặc https://..."
             >
 
             <label for="product-description">Mô tả</label>
@@ -177,7 +175,7 @@
                 id="product-badge"
                 type="text"
                 maxlength="30"
-                placeholder="Ví dụ: Bán chạy"
+                placeholder="Ví dụ: Bán chạy, Mới, -20%"
             >
 
             <div class="form-actions">
@@ -193,7 +191,9 @@
             </div>
         </form>
     </dialog>
+    <script src="../JS/admin-data.js"></script>
+    <script src="../JS/admin-sanpham.js"></script>
+        <script src="../JS/admin.js"></script>
 
-    <script src="admin-sanpham.js"></script>
 </body>
 </html>

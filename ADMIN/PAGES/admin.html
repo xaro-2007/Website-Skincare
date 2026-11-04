@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Julie Skin</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 
@@ -17,10 +17,10 @@
             <a class="active" href="admin.html">Tổng quan</a>
             <a href="donhang.html">Đơn hàng</a>
             <a href="sanpham.html"> Sản phẩm</a>
-            <a href="thongke.html">Thống kê</a>
+            <a href="nguoidung.html">Người dùng</a>
         </nav>
 
-        <button class="logout" onclick="alert('Bạn đã đăng xuất!')">
+        <button class="logout" onclick="logoutAdmin()">
             Đăng xuất
         </button>
     </aside>
@@ -39,11 +39,7 @@
                 </div>
                 <div class="card">
                     <h3>Sản phẩm</h3>
-                    <p>0</p>
-                </div>
-                <div class="card">
-                    <h3>Tin nhắn</h3>
-                    <p>0</p>
+                    <p id="productCount"></p>
                 </div>
             </div>
 
@@ -110,30 +106,6 @@
             </div>
         </section>
 
-        <!-- 4. LIEN HE -->
-        <section class="page" id="lienhe">
-            <h1>Quản lý liên hệ</h1>
-            <p class="subtitle">Tin nhắn từ khách hàng</p>
-
-            <div class="panel">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Khách hàng</th>
-                            <th>Email</th>
-                            <th>Chủ đề</th>
-                            <th>Trạng thái</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="4">Chưa có tin nhắn.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
         <!-- 5. THONG KE -->
         <section class="page" id="thongke">
             <h1>Thống kê</h1>
@@ -161,7 +133,7 @@
         </section>
 
     </main>
-
-    <script src="admin.js"></script>
+    <script src="../JS/admin-data.js"></script>
+    <script src="../JS/admin.js"></script>
 </body>
 </html>

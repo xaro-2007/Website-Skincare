@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Về chúng tôi - Julie Skin</title>
+    <title>Jinie Skin</title>
 
     <link rel="stylesheet" href="../CSS/vechungtoi.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
 </head>
 <body>
 
-<<<<<<< HEAD
     <header>
     <!-- Sửa lại phần Logo có thẻ a bọc ngoài, gom hình và chữ lại với nhau -->
     <a href="trangchu.html" class="logo">
@@ -19,20 +19,63 @@
             <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
         </span>
     </a>
-=======
-    <header class="header">
-        <img class="main-logo" src="../img/logo.png" alt="Jinie"><span><b>Jinie</b></span><b>Skin</b>
->>>>>>> 8c19b57d232556aa2cd593b1b166d5b7fa2639dd
 
-    <nav id="menu">
-        <!-- Các menu giữ nguyên -->
-        <a class="chon" href="trangchu.html">Trang chủ</a>
-        <a href="sanpham.html">Sản phẩm</a>
-        <a href="vechungtoi.html"> Về chúng tôi</a>
-        <a href="lienhe.html">Liên hệ</a>
-        <a href="giohang.html">Giỏ hàng</a>
-    </nav>
+        <nav id="menu">
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a class="chon" href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="blog.html">Blog</a>
+        </nav>
 
+        <div class="header-right">
+            <div class="header-right">
+    <!-- Nút hiển thị khi chưa đăng nhập -->
+    <div id="authButtons" style="display: block;">
+        <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+    </div>
+
+    <!-- Khu vực hiển thị khi đã đăng nhập -->
+    <div id="userDashboard" style="display: none;">
+        <span>Xin chào, <span id="tenHienThi"></span>!</span>
+        <button onclick="dangXuat()">Đăng xuất</button>
+    </div>
+
+    <!-- Modal Đăng nhập -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng nhập</h3>
+            <input type="text" id="logUser" placeholder="Tài khoản">
+            <input type="password" id="logPass" placeholder="Mật khẩu">
+            <br><br>
+            <button onclick="dangNhap()">Đăng nhập</button>
+            <button onclick="dongModal('loginModal')">Hủy</button>
+            <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')" style="cursor:pointer; color:pink;">Đăng ký ngay</span></p>
+        </div>
+    </div>
+
+    <!-- Modal Đăng ký -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h3>Đăng ký</h3>
+            <input type="text" id="regName" placeholder="Họ và tên">
+            <input type="text" id="regUser" placeholder="Tài khoản">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="tel" id="regPhone" placeholder="Số điện thoại">
+            <input type="password" id="regPass" placeholder="Mật khẩu">
+            <input type="password" id="regConfirmPass" placeholder="Xác nhận mật khẩu">
+            <br><br>
+            <button onclick="dangKy()">Đăng ký</button>
+            <button onclick="dongModal('registerModal')">Hủy</button>
+            <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')" style="cursor:pointer; color:pink;">Đăng nhập</span></p>
+        </div>
+    </div>
+</div>
+
+            <script src="../JS/dangnhap.js"></script>
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="soLuong">0</span>)</a>
+        </div>
+    </header>
     <section class="page-banner">
         <div class="banner-content">
             <h1>Về chúng tôi</h1>
@@ -155,21 +198,14 @@
 
     </section>
 
-    <footer class="footer">
-
-        <a href="trangchu.html" class="footer-logo">
-            JULIE SKIN
-        </a>
-
-        <div class="footer-links">
-            <a href="trangchu.html">Trang chủ</a>
-            <a href="sanpham.html">Sản phẩm</a>
-            <a href="vechungtoi.html">Về chúng tôi</a>
-            <a href="giohang.html">Giỏ hàng</a>
+    <footer>
+        <div class="footer noiDung">
+            <div><h3>Jinie<span>Skin</span></h3><p>Mỹ phẩm dành cho vẻ đẹp tự nhiên và tự tin.</p></div>
+            <div><h3>Liên kết</h3><a href="trangchu.html">Trang chủ</a><a href="sanpham.html">Sản phẩm</a><a href="lienhe.html">Liên hệ</a></div>
+            <div><h3>Hỗ trợ</h3><a href="#">Đổi trả</a><a href="#">Vận chuyển</a><a href="#">Bảo mật</a></div>
+            <div><h3>Liên hệ</h3><p>99 Tô Hiến Thanh, TP.Đà Nẵng</p><p>0328414070</p><p>chungtoilajinie@gmail.com</p></div>
         </div>
-
-        <p>© 2026 Julie Skin. All rights reserved.</p>
-
+        <p class="banQuyen">© 2026 JinieSkin</p>
     </footer>
 
 </body>

@@ -3,31 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng - Julie Skin</title>
+    <title>Jinie Skin</title>
     <link rel="stylesheet" href="../CSS/giohang.css">
+    <link rel="stylesheet" href="../CSS/dangnhap.css">
+    
+    <!-- Thư viện EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("cm79tSBxf3uGrqvaQ"); // Public Key của bạn
+        })();
+    </script>
 </head>
 
 <body>
-
-    <header class="header">
-        <img class="main-logo" src="../img/logo.png" alt="Jinie"><span><b>Jinie</b></span><b>Skin</b>
-
-        <nav class="navbar">
-            <a href="trangchu.html">Trang chủ</a>|
-            <a href="sanpham.html">Sản phẩm</a>|
-            <a href="vechungtoi.html">Về chúng tôi</a>|
-            <a href="lienhe.html">Liên hệ</a>|
-            <a href="giohang.html" class="active">Giỏ hàng (<span id="cart-count">0</span>) </a>
+    <header>
+        <a href="trangchu.html" class="logo">
+            <img class="main-logo" src="../img/logo.png" alt="Jinie">
+            <span class="brand-text">
+                <span class="text-jinie">Jinie</span><span class="text-skin">Skin</span>
+            </span>
+        </a>
+        <nav id="menu">
+            <a href="trangchu.html">Trang chủ</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="vechungtoi.html">Về chúng tôi</a>
+            <a href="lienhe.html">Liên hệ</a>
+            <a href="blog.html">Blog</a>
         </nav>
+
+        <div class="header-right">
+            <div id="authButtons">
+                <button onclick="moModal('loginModal')" class="btn-log">Đăng nhập</button>
+            </div>
+
+            <div id="userDashboard" style="display: none;">
+                <span>Xin chào, <span id="tenHienThi"></span>!</span>
+                <button onclick="dangXuat()">Đăng xuất</button>
+            </div>
+
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" id="logUser" placeholder="Tài khoản">
+                    <input type="password" id="logPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangNhap()">Đăng nhập</button>
+                    <button onclick="dongModal('loginModal')">Hủy</button>
+                    <p class="switch-text">Chưa có tài khoản? <span onclick="chuyenForm('loginModal', 'registerModal')">Đăng ký ngay</span></p>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <h3>Đăng ký</h3>
+                    <input type="text" id="regName" placeholder="Họ và tên">
+                    <input type="text" id="regUser" placeholder="Tài khoản">
+                    <input type="password" id="regPass" placeholder="Mật khẩu">
+                    <br><br>
+                    <button onclick="dangKy()">Đăng ký</button>
+                    <button onclick="dongModal('registerModal')">Hủy</button>
+                    <p class="switch-text">Đã có tài khoản? <span onclick="chuyenForm('registerModal', 'loginModal')">Đăng nhập</span></p>
+                </div>
+            </div>
+
+            <a href="giohang.html" class="gio-hang">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
     </header>
 
     <main class="container">
-
         <h1>Giỏ hàng của bạn</h1>
-
-        <p class="description">
-            Kiểm tra sản phẩm và thông tin đơn hàng của bạn.
-        </p>
+        <p class="description">Kiểm tra sản phẩm và thông tin đơn hàng của bạn.</p>
 
         <div class="cart-layout">
             <section class="cart-products">
@@ -59,16 +105,76 @@
                 </button>
 
                 <a href="sanpham.html" class="continue-shopping">← Tiếp tục mua sắm</a>
-
             </aside>
         </div>
+
+        <!-- FORM ĐẶT HÀNG (Giữ nguyên class CSS cũ của bạn + thêm thuộc tính name) -->
+        <section id="checkout-form" class="checkout-form">
+            <h2>Thông tin đặt hàng</h2>
+            <p>Vui lòng điền đầy đủ thông tin để chúng tôi giao hàng cho bạn.</p>
+
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="customer-name">Họ và tên *</label>
+                    <input type="text" id="customer-name" name="customer_name" placeholder="Nhập họ và tên" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Số điện thoại *</label>
+                    <input type="tel" id="customer-phone" name="customer_phone" placeholder="Nhập số điện thoại" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-email">Email</label>
+                    <!-- QUAN TRỌNG: name="reply_to" khớp với cấu hình To Email bên EmailJS -->
+                    <input type="email" id="customer-email" name="reply_to" placeholder="Nhập email của bạn">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-address">Địa chỉ nhận hàng *</label>
+                    <textarea id="customer-address" name="customer_address" placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-note">Ghi chú đơn hàng</label>
+                    <textarea id="customer-note" name="customer_note" placeholder="Ghi chú thêm nếu có..."></textarea>
+                </div>
+
+                <!-- Các trường ẩn để truyền dữ liệu chi tiết đơn hàng sang EmailJS -->
+                <input type="hidden" id="order-id-input" name="order_id">
+                <input type="hidden" id="order-details-input" name="order_details">
+                <input type="hidden" id="order-total-input" name="order_total">
+
+                <div class="form-buttons">
+                    <button type="submit" id="submit-order-btn" class="confirm-btn">
+                        Xác nhận đặt hàng
+                    </button>
+                    <button type="button" id="cancel-btn" class="cancel-btn">
+                        Hủy
+                    </button>
+                </div>
+            </form>
+        </section>
     </main>
 
-    <footer class="footer">
-        <p>© 2026 Julie Skin. Chăm sóc làn da của bạn.</p>
+        <footer>
+        <div class="footer noiDung">
+            <div><h3>Jinie<span>Skin</span></h3><p>Mỹ phẩm dành cho vẻ đẹp tự nhiên và tự tin.</p></div>
+            <div><h3>Liên kết</h3><a href="trangchu.html">Trang chủ</a><a href="sanpham.html">Sản phẩm</a><a href="lienhe.html">Liên hệ</a></div>
+            <div><h3>Hỗ trợ</h3><a href="#">Đổi trả</a><a href="#">Vận chuyển</a><a href="#">Bảo mật</a></div>
+            <div><h3>Liên hệ</h3><p>99 Tô Hiến Thanh, TP.Đà Nẵng</p><p>0328414070</p><p>chungtoilajuline@gmail.com</p></div>
+        </div>
+        <p class="banQuyen">© 2026 JinieSkin</p>
     </footer>
+    <div id="orderSuccessModal" class="modal">
+    <div class="modal-content success-modal-content">
+        <h3 class="success-modal-title">🎉 ĐẶT HÀNG THÀNH CÔNG!</h3>
+        <p id="orderSuccessMessage" class="success-modal-message"></p>
+        <button onclick="dongModal('orderSuccessModal')" class="success-modal-btn">OK</button>
+    </div>
+</div>
 
+    <script src="../JS/dangnhap.js"></script>
     <script src="../JS/giohang.js"></script>
-
 </body>
 </html>

@@ -12,16 +12,6 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 7%;
-    background-color: white;
-    border-bottom: 1px solid #f0dfe4;
-}
-
 .logo {
     color: #c75b7a;
     font-size: 25px;
@@ -50,6 +40,10 @@ body {
 .navbar a:hover,
 .navbar a.active {
     color: #c75b7a;
+}
+
+.chon {
+  scroll-behavior: smooth;
 }
 
 /* CONTAINER */
@@ -238,22 +232,41 @@ body {
 }
 
 /* FOOTER */
-.footer {
-    text-align: center;
-    padding: 25px;
-    background-color: white;
-    color: #777;
+footer {
+    color: white;
+    background-color: #302b31;
     margin-top: 50px;
+}
+.footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 25px;
+    padding: 45px 8%;
+    text-align: left;
+}
+.footer a {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #dddddd;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #ff7699;
+}
+.footer h3 span {
+    color: #ff7699;
+}
+.banQuyen {
+    margin: 0;
+    padding: 16px;
+    border-top: 1px solid #555555;
+    color: #bbbbbb;
+    text-align: center;
 }
 
 /* RESPONSIVE CHO ĐIỆN THOẠI */
 @media screen and (max-width: 768px) {
-
-    .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
-    }
 
     .nav {
         flex-wrap: wrap;
@@ -300,4 +313,239 @@ body {
     .quantity-control {
         gap: 7px;
     }
+}
+
+/* FORM ĐẶT HÀNG */
+
+.checkout-form {
+    display: none;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form.show {
+    display: block;
+}
+
+.checkout-form h2 {
+    text-align: center;
+    color: #c47b83;
+    margin-bottom: 10px;
+}
+
+.checkout-form > p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #c47b83;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.confirm-btn,
+.cancel-btn {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.confirm-btn {
+    background-color: #c47b83;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #a95d67;
+}
+
+.cancel-btn {
+    background-color: #eee;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #ddd;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .checkout-form {
+        padding: 20px;
+        margin: 25px 10px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+}
+.success-modal-content {
+    text-align: center;
+    max-width: 450px;
+}
+
+.success-modal-title {
+    color: #ff3366;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.success-modal-message {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+    font-size: 15px;
+}
+
+.highlight-price, .highlight-id {
+    color: #ff3366;
+    font-weight: bold;
+}
+
+.success-modal-note {
+    font-size: 13px;
+    color: #666;
+    display: block;
+    margin-top: 10px;
+}
+
+.success-modal-btn {
+    padding: 10px 25px;
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.success-modal-btn:hover {
+    background-color: #e02e55;
+}
+
+/* Form đặt hàng */
+.checkout-form {
+    display: none;
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Khi nhấn nút đặt hàng */
+.checkout-form.show {
+    display: block;
+}
+
+.checkout-form h2 {
+    text-align: center;
+    color: #b76e79;
+    margin-bottom: 10px;
+}
+
+.checkout-form > p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.form-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#cancel-btn {
+    background-color: #ddd;
+    color: #333;
+}
+
+#submit-order-btn {
+    background-color: #b76e79;
+    color: white;
+}
+
+#submit-order-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
