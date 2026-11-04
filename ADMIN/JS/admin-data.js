@@ -1,6 +1,6 @@
 const PRODUCTS_KEY = "julie_products";
 const PRODUCTS_SOURCE_KEY = "julie_products_source";
-const USERS_KEY = "julie_users";
+const USERS_KEY = "accounts";
 const ORDERS_KEY = "orders";
 const ACTIVITY_KEY = "julie_activity";
 

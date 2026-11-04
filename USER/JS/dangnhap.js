@@ -71,7 +71,7 @@ function dangNhap() {
         dongModal('loginModal');
         
         // Chuyển hướng chính xác vào thư mục ADMIN/pages/admin.html
-        window.location.href = "../../ADMIN/pages/admin.html"; 
+        window.location.href = "../../ADMIN/PAGES/admin.html"; 
         return;
     }
 
