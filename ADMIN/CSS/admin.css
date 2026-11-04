@@ -582,3 +582,205 @@ td {
     }
 }
 
+/* =========================================
+   FORM THÊM / SỬA SẢN PHẨM
+========================================= */
+
+.product-dialog {
+    width: min(680px, calc(100% - 32px));
+    max-width: 680px;
+    max-height: 90vh;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #292633;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    overflow-y: auto;
+}
+
+.product-dialog[open] {
+    display: block;
+    margin: auto;
+}
+
+.product-dialog::backdrop {
+    background: rgba(28, 24, 36, 0.55);
+    backdrop-filter: blur(3px);
+}
+
+/* Nội dung form */
+#product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 28px;
+    box-sizing: border-box;
+}
+
+/* Tiêu đề */
+.product-dialog .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: -24px -28px 12px;
+    padding: 20px 28px;
+    border-bottom: 1px solid #f0dce4;
+    background: #fff8fb;
+}
+
+.product-dialog .dialog-header h2 {
+    margin: 0;
+    color: #bd527b;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+/* Nút đóng */
+.product-dialog .icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: #f8e7ee;
+    color: #a83e68;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-dialog .icon-button:hover {
+    background: #bd527b;
+    color: #ffffff;
+}
+
+/* Ẩn trường ID */
+#product-id {
+    display: none;
+}
+
+/* Nhãn trường nhập */
+#product-form label {
+    display: block;
+    margin-top: 6px;
+    color: #393342;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Các ô nhập liệu */
+#product-form input:not([type="hidden"]),
+#product-form select,
+#product-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    box-sizing: border-box;
+    border: 1px solid #ded8e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #292633;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#product-form input:not([type="hidden"]),
+#product-form select {
+    min-height: 42px;
+}
+
+#product-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+#product-form input::placeholder,
+#product-form textarea::placeholder {
+    color: #aaa3b0;
+}
+
+#product-form input:focus,
+#product-form select:focus,
+#product-form textarea:focus {
+    border-color: #c65c85;
+    box-shadow: 0 0 0 3px rgba(198, 92, 133, 0.12);
+}
+
+/* Khu vực nút bấm */
+.product-dialog .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 18px;
+    border-top: 1px solid #f0e8ed;
+}
+
+.product-dialog .form-actions button {
+    min-height: 42px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-dialog .form-actions .secondary {
+    border: 1px solid #ded8e1;
+    background: #ffffff;
+    color: #514957;
+}
+
+.product-dialog .form-actions .secondary:hover {
+    background: #f5f1f4;
+}
+
+.product-dialog .form-actions .primary {
+    border: 1px solid #c65c85;
+    background: #c65c85;
+    color: #ffffff;
+}
+
+.product-dialog .form-actions .primary:hover {
+    background: #ad456f;
+    border-color: #ad456f;
+}
+
+/* Giao diện điện thoại */
+@media (max-width: 600px) {
+    .product-dialog {
+        width: calc(100% - 20px);
+        max-height: 92vh;
+        border-radius: 12px;
+    }
+
+    #product-form {
+        padding: 18px;
+    }
+
+    .product-dialog .dialog-header {
+        margin: -18px -18px 10px;
+        padding: 16px 18px;
+    }
+
+    .product-dialog .dialog-header h2 {
+        font-size: 20px;
+    }
+
+    .product-dialog .form-actions button {
+        flex: 1;
+        padding: 10px;
+    }
+}
+
+
