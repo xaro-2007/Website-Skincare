@@ -125,17 +125,6 @@
         "description": "Bổ sung bước dưỡng ẩm vào buổi tối.",
         "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
         "badge": ""
-    },
-    {
-        "id": 10,
-        "name": "Kem dưỡng ban đêm",
-        "category": "moisturizer",
-        "categoryName": "Kem dưỡng",
-        "price": 390000,
-        "stock": 10,
-        "description": "Bổ sung bước dưỡng ẩm vào buổi tối.",
-        "img": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
-        "badge": ""
     }
 ]
 
