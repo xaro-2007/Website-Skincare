@@ -23,24 +23,72 @@ function chuyenForm(fromModalId, toModalId) {
 // --- 2. XỬ LÝ ĐĂNG KÝ (Đăng ký xong tự động đăng nhập luôn) ---
 function dangKy() {
     const name = document.getElementById("regName").value.trim();
-    const user = document.getElementById("regUser").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const phone = document.getElementById("regPhone").value.trim();
     const pass = document.getElementById("regPass").value.trim();
 
-    if (!name || !user || !pass) {
+    if (!name || !email || !phone || !pass) {
         alert("Vui lòng điền đầy đủ thông tin đăng ký!");
         return;
     }
 
-    let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    const existing = accounts.find(acc => acc.user === user);
-    if (existing) {
-        alert("Tài khoản này đã tồn tại!");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert("Vui lòng nhập email hợp lệ!");
         return;
     }
 
-    // Lưu tài khoản mới vào danh sách
-    accounts.push({ name, user, pass });
-    localStorage.setItem("accounts", JSON.stringify(accounts));
+    if (!/^\+?[0-9\s()-]{8,20}$/.test(phone)) {
+        alert("Vui lòng nhập số điện thoại hợp lệ!");
+        return;
+    }
+
+    let accounts;
+    try {
+        accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+        if (!Array.isArray(accounts)) {
+            accounts = [];
+        }
+    } catch (error) {
+        console.error("Không đọc được danh sách tài khoản:", error);
+        alert("Không thể đọc danh sách tài khoản. Vui lòng tải lại trang.");
+        return;
+    }
+
+    const normalizedEmail = email.toLowerCase();
+    const normalizedPhone = phone.replace(/\D/g, "");
+    const existing = accounts.find(acc =>
+        String(acc.email || "").toLowerCase() === normalizedEmail ||
+        String(acc.phone || "").replace(/\D/g, "") === normalizedPhone
+    );
+    if (existing) {
+        alert("Email hoặc số điện thoại này đã được đăng ký!");
+        return;
+    }
+
+    const nextAccountId = accounts.reduce((maxId, account) => {
+        return Math.max(maxId, Number(account.id) || 0);
+    }, 0) + 1;
+
+    accounts.push({
+        id: nextAccountId,
+        name: name,
+        username: email,
+        user: email,
+        email: email,
+        phone: phone,
+        pass: pass,
+        role: "user",
+        status: "active",
+        createdAt: new Date().toISOString().slice(0, 10)
+    });
+
+    try {
+        localStorage.setItem("accounts", JSON.stringify(accounts));
+    } catch (error) {
+        console.error("Không lưu được tài khoản:", error);
+        alert("Không thể lưu tài khoản. Vui lòng thử lại.");
+        return;
+    }
 
     // Tự động gán trạng thái đăng nhập cho tài khoản mới đăng ký
     localStorage.setItem("currentUser", name);
@@ -58,7 +106,7 @@ function dangNhap() {
     const pass = document.getElementById("logPass").value.trim();
 
     if (!user || !pass) {
-        alert("Vui lòng nhập tài khoản và mật khẩu!");
+        alert("Vui lòng nhập email/số điện thoại và mật khẩu!");
         return;
     }
 
@@ -77,7 +125,19 @@ function dangNhap() {
 
     // 2. Kiểm tra tài khoản khách hàng thông thường (`accounts`)
     let accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    const foundUser = accounts.find(acc => acc.user === user && acc.pass === pass);
+    const normalizedLogin = user.toLowerCase();
+    const normalizedPhone = user.replace(/\D/g, "");
+    const foundUser = accounts.find(acc => {
+        const accountEmail = String(acc.email || "").toLowerCase();
+        const accountPhone = String(acc.phone || "").replace(/\D/g, "");
+        const legacyUsername = String(acc.user || acc.username || "");
+
+        return acc.pass === pass && (
+            accountEmail === normalizedLogin ||
+            (normalizedPhone && accountPhone === normalizedPhone) ||
+            legacyUsername === user
+        );
+    });
 
     if (foundUser) {
         localStorage.setItem("currentUser", foundUser.name);

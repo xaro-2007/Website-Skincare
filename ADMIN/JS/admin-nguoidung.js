@@ -20,17 +20,40 @@ async function initUsers() {
     const totalAdmins = document.getElementById("total-admins");
     const totalActive = document.getElementById("total-active");
 
+    function loadUsers() {
+        const users = getUsers();
+        let nextUserId = users.reduce(function (maxId, user) {
+            return Math.max(maxId, Number(user.id) || 0);
+        }, 0) + 1;
+
+        return users.map(function (user) {
+            const normalized = Object.assign({}, user);
+            if (normalized.id === undefined || normalized.id === null || normalized.id === "") {
+                normalized.id = nextUserId;
+                nextUserId += 1;
+            }
+            normalized.name = normalized.name || "";
+            normalized.username = normalized.username || normalized.user || "";
+            normalized.email = normalized.email || "";
+            normalized.phone = normalized.phone || "";
+            normalized.role = normalized.role || "user";
+            normalized.status = normalized.status || "active";
+            return normalized;
+        });
+    }
+
     // Hiển thị bảng người dùng, thống kê và kết quả lọc.
     function renderTable() {
         const keyword = searchInput.value.trim().toLowerCase();
         const role = roleFilter.value;
-        const users = getUsers();
+        const users = loadUsers();
 
         const filtered = users.filter(function (user) {
             const matchKeyword =
-                String(user.name).toLowerCase().includes(keyword) ||
-                String(user.username).toLowerCase().includes(keyword) ||
-                String(user.email).toLowerCase().includes(keyword);
+                String(user.name || "").toLowerCase().includes(keyword) ||
+                String(user.phone || "").toLowerCase().includes(keyword) ||
+                String(user.username || "").toLowerCase().includes(keyword) ||
+                String(user.email || "").toLowerCase().includes(keyword);
 
             const matchRole = role === "all" || user.role === role;
 
@@ -45,20 +68,15 @@ async function initUsers() {
 
             tableBody.innerHTML = filtered.map(function (user) {
                 const id = escapeHTML(user.id);
-                const name = escapeHTML(user.name);
+                const name = escapeHTML(user.name || "");
                 const phone = escapeHTML(user.phone || "Chưa có SĐT");
-                const username = escapeHTML(user.username);
-                const email = escapeHTML(user.email);
+                const username = escapeHTML(user.username || "");
+                const email = escapeHTML(user.email || "");
 
                 return (
                     "<tr>" +
-                        "<td>" +
-                            "<strong>" + name + "</strong><br>" +
-                            '<span style="font-size:12px;color:#817681;">' +
-                                phone +
-                            "</span>" +
-                        "</td>" +
-                        "<td>" + username + "</td>" +
+                        "<td><strong>" + name + "</strong></td>" +
+                        "<td>" + phone + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + (user.role === "admin"
                             ? "Quản trị viên"
@@ -103,7 +121,7 @@ async function initUsers() {
         dialogTitle.textContent = "Thêm người dùng";
 
         if (id !== "") {
-            const user = getUsers().find(function (item) {
+            const user = loadUsers().find(function (item) {
                 return String(item.id) === String(id);
             });
 
@@ -114,8 +132,7 @@ async function initUsers() {
 
             document.getElementById("user-id").value = user.id;
             document.getElementById("user-name").value = user.name;
-            document.getElementById("user-username").value = user.username;
-            document.getElementById("user-email").value = user.email;
+            document.getElementById("user-email").value = user.email || "";
             document.getElementById("user-phone").value = user.phone || "";
             document.getElementById("user-role").value = user.role;
             document.getElementById("user-status").value = user.status;
@@ -156,15 +173,20 @@ async function initUsers() {
             return;
         }
 
-        const users = getUsers();
+        const users = loadUsers();
 
+        const normalizedPhone = phone.replace(/\D/g, "");
+        const normalizedEmail = email.toLowerCase();
         const duplicate = users.find(function (user) {
-            return user.username.toLowerCase() === username.toLowerCase() &&
-                String(user.id) !== String(id);
+            return String(user.id) !== String(id) && (
+                String(user.username || user.user || "").toLowerCase() === username.toLowerCase() ||
+                String(user.email || "").toLowerCase() === email.toLowerCase() ||
+                (phone && String(user.phone || "").replace(/\D/g, "") === phone.replace(/\D/g, ""))
+            );
         });
 
         if (duplicate) {
-            alert("Tài khoản này đã tồn tại. Vui lòng chọn tài khoản khác.");
+            alert("Tài khoản, email hoặc số điện thoại này đã được sử dụng.");
             return;
         }
 
@@ -190,7 +212,7 @@ async function initUsers() {
                 alert("Không tìm thấy người dùng cần sửa.");
                 return;
             }
-
+            user.name = name;
             user.name = name;
             user.username = username;
             user.email = email;
@@ -224,7 +246,7 @@ async function initUsers() {
             return;
         }
 
-        const users = getUsers();
+        const users = loadUsers();
         const user = users.find(function (item) {
             return String(item.id) === String(id);
         });
