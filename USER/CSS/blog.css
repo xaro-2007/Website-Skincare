@@ -14,6 +14,10 @@ a {
     color: inherit;
 }
 
+.chon {
+  scroll-behavior: smooth;
+}
+
 .blog-banner {
     background-color: #ffe9ef;
     text-align: center;
