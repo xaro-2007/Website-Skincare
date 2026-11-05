@@ -43,3 +43,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+function updateCartCount() {
+
+    const cart = getCart();
+
+    const totalQuantity = cart.reduce((sum, item) => {
+        return sum + Number(item.quantity);
+    }, 0);
+
+    const cartCount = document.getElementById("cart-count");
+
+    if (cartCount) {
+        cartCount.textContent = totalQuantity;
+    }
+
+}
