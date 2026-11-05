@@ -540,6 +540,45 @@ footer {
     color: #333;
 }
 
+.checkout-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.checkout-modal.show {
+    display: flex;
+}
+
+.checkout-modal .checkout-form {
+    display: block;
+    width: min(100%, 650px);
+    max-height: calc(100vh - 48px);
+    margin: auto;
+    overflow-y: auto;
+}
+
+body.checkout-modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .checkout-modal {
+        padding: 12px;
+    }
+
+    .checkout-modal .checkout-form {
+        max-height: calc(100vh - 24px);
+        margin: auto;
+    }
+}
+
 #submit-order-btn {
     background-color: #b76e79;
     color: white;

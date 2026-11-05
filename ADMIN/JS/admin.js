@@ -1,5 +1,11 @@
 // Khởi tạo trang Tổng quan.
 async function initDashboard() {
+    const dashboard = document.getElementById("tongquan");
+
+    if (!dashboard) {
+        return;
+    }
+
     await prepareAdminData();
 
     const products = getProducts();
@@ -7,6 +13,11 @@ async function initDashboard() {
     const orders = getOrders();
     const contacts = readStorage(CONTACT_KEY, []);
     const contactList = Array.isArray(contacts) ? contacts : [];
+    const contactCount = document.getElementById("contactCount");
+
+    if (contactCount) {
+        contactCount.textContent = contactList.length;
+    }
 
     document.querySelectorAll("#tongquan .card").forEach(function (card) {
         const title = card.querySelector("h3").textContent.trim();

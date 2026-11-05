@@ -486,6 +486,10 @@ if (categoryFilter) {
     categoryFilter.addEventListener("change", filterProducts);
 }
 
+if (sortPrice) {
+    sortPrice.addEventListener("change", filterProducts);
+}
+
 searchInput.addEventListener("input", filterProducts);
 
 for (let i = 0; i < tagButtons.length; i++) {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin nhắn liên hệ - Julie Skin</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Julie<span>Skin</span></h2>
+        <p class="label">ADMIN PANEL</p>
+
+        <nav id="menu">
+            <a href="admin.html">Tổng quan</a>
+            <a href="donhang.html">Đơn hàng</a>
+            <a href="sanpham.html">Sản phẩm</a>
+            <a href="tinnhan.html" class="active">Tin nhắn</a>
+            <a href="nguoidung.html">Người dùng</a>
+        </nav>
+
+        <button class="logout" onclick="logoutAdmin()">Đăng xuất</button>
+    </aside>
+
+    <main class="content">
+        <header class="admin-header">
+            <div>
+                <h1>Tin nhắn liên hệ</h1>
+                <p>Theo dõi và xử lý thông tin khách hàng gửi đến.</p>
+            </div>
+        </header>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <p>Tổng tin nhắn</p>
+                <h2 id="total-messages">0</h2>
+            </article>
+            <article class="stat-card">
+                <p>Chưa xử lý</p>
+                <h2 id="pending-messages">0</h2>
+            </article>
+            <article class="stat-card">
+                <p>Đã xử lý</p>
+                <h2 id="resolved-messages">0</h2>
+            </article>
+        </section>
+
+        <section class="admin-section">
+            <div class="contact-toolbar">
+                <input
+                    id="contact-search"
+                    type="search"
+                    placeholder="Tìm tên, email hoặc nội dung..."
+                    aria-label="Tìm tin nhắn liên hệ"
+                >
+                <select id="contact-status-filter" aria-label="Lọc trạng thái">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="Chưa xử lý">Chưa xử lý</option>
+                    <option value="Đã xử lý">Đã xử lý</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Khách hàng</th>
+                            <th>Email</th>
+                            <th>Chủ đề</th>
+                            <th>Ngày gửi</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contact-list"></tbody>
+                </table>
+            </div>
+            <p id="empty-contacts" class="empty-message" hidden>Không tìm thấy tin nhắn phù hợp.</p>
+        </section>
+    </main>
+
+    <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title">
+        <div class="dialog-header">
+            <h2 id="contact-dialog-title">Chi tiết tin nhắn</h2>
+            <button type="button" id="close-contact-dialog" class="close-btn" aria-label="Đóng">×</button>
+        </div>
+        <div id="contact-detail" class="contact-detail"></div>
+    </dialog>
+
+    <script src="../JS/admin-data.js"></script>
+    <script src="../JS/admin-lienhe.js"></script>
+    <script src="../JS/admin.js"></script>
+</body>
+</html>

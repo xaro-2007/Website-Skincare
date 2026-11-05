@@ -141,6 +141,19 @@ h1 {
     font-size: 14px;
 }
 
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #c45a7e;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
 /* ===== 6. Bang du lieu ===== */
 table {
     width: 100%;
@@ -336,6 +349,180 @@ td {
     font-size: 22px;
 }
 
+.contact-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.contact-toolbar input,
+.contact-toolbar select {
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #e6d6dd;
+    border-radius: 6px;
+    background: white;
+    color: #39333a;
+    font: inherit;
+}
+
+.contact-toolbar input {
+    flex: 1;
+}
+
+.contact-toolbar select {
+    min-width: 190px;
+}
+
+.contact-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #fff1d6;
+    color: #815d20;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.contact-status.is-resolved {
+    background: #e3f5e9;
+    color: #28643b;
+}
+
+.contact-dialog {
+    width: min(600px, calc(100% - 32px));
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    margin: auto;
+    padding: 24px;
+    border: 1px solid #f0e2e8;
+    border-radius: 12px;
+    background: #fff;
+    color: #39333a;
+    box-shadow: 0 12px 40px #0002;
+}
+
+.contact-dialog::backdrop {
+    background: #30152280;
+}
+
+.contact-detail {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.contact-detail > p {
+    margin: 8px 0;
+}
+
+.contact-message {
+    padding: 14px;
+    margin-top: 16px;
+    border: 1px solid #f0e2e8;
+    border-radius: 8px;
+    background: #fff9fb;
+}
+
+.contact-message p {
+    margin: 8px 0 0;
+    white-space: pre-wrap;
+}
+
+.product-dialog {
+    width: min(560px, calc(100% - 32px));
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    margin: auto;
+    padding: 24px;
+    border: 1px solid #f0e2e8;
+    border-radius: 12px;
+    background: #fff;
+    color: #39333a;
+    box-shadow: 0 12px 40px #0002;
+}
+
+.product-dialog::backdrop {
+    background: #30152280;
+}
+
+.product-dialog form {
+    display: grid;
+    gap: 10px;
+}
+
+.product-dialog .dialog-header {
+    margin-bottom: 10px;
+}
+
+.product-dialog label {
+    color: #514650;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product-dialog input:not([type="hidden"]),
+.product-dialog select,
+.product-dialog textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 11px;
+    border: 1px solid #e6d6dd;
+    border-radius: 6px;
+    background: #fff;
+    color: #39333a;
+    font: inherit;
+}
+
+.product-dialog textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.product-dialog input:focus,
+.product-dialog select:focus,
+.product-dialog textarea:focus {
+    border-color: #d9688d;
+    outline: 2px solid #d9688d33;
+}
+
+.icon-button {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 5px;
+    background: #f8e6ed;
+    color: #81435a;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #f1d1de;
+}
+
+.product-dialog .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.product-dialog .secondary {
+    padding: 9px 12px;
+    border: 1px solid #e6d6dd;
+    border-radius: 5px;
+    background: #fff;
+    color: #514650;
+    cursor: pointer;
+}
+
+.product-dialog .secondary:hover {
+    background: #fff9fb;
+}
+
 .close-btn {
     width: 36px;
     height: 36px;
@@ -393,6 +580,22 @@ td {
     }
 
     #order-dialog {
+        padding: 16px;
+    }
+
+    .product-dialog {
+        padding: 16px;
+    }
+
+    .contact-toolbar {
+        flex-direction: column;
+    }
+
+    .contact-toolbar select {
+        min-width: 0;
+    }
+
+    .contact-dialog {
         padding: 16px;
     }
 }
@@ -581,4 +784,3 @@ td {
         flex-direction: column;
     }
 }
-

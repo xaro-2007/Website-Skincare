@@ -6,10 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
 
             const lienHe = {
+                id: Date.now().toString(36) + Math.random().toString(36).slice(2),
                 ten: document.getElementById("name").value.trim(),
                 email: document.getElementById("email").value.trim(),
                 chuDe: document.getElementById("subject").value,
-                noiDung: document.getElementById("message").value.trim()
+                noiDung: document.getElementById("message").value.trim(),
+                ngayGui: new Date().toISOString(),
+                trangThai: "Chưa xử lý"
             };
 
             try {

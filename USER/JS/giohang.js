@@ -170,10 +170,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Bật/tắt form thanh toán
+    // Mở form thanh toán dưới dạng hộp thoại
     const checkoutButton = document.getElementById("checkout-btn");
+    const checkoutModal = document.getElementById("checkout-modal");
     const checkoutForm = document.getElementById("checkout-form");
     const cancelButton = document.getElementById("cancel-btn");
+
+    function closeCheckoutModal() {
+        if (!checkoutModal) return;
+
+        checkoutModal.classList.remove("show");
+        checkoutModal.hidden = true;
+        document.body.classList.remove("checkout-modal-open");
+        if (checkoutButton) checkoutButton.focus();
+    }
 
     if (checkoutButton) {
         checkoutButton.addEventListener("click", function() {
@@ -182,16 +192,30 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Giỏ hàng đang trống!");
                 return;
             }
-            if (checkoutForm) {
-                checkoutForm.classList.add("show");
-                checkoutForm.scrollIntoView({ behavior: "smooth" });
+            if (checkoutModal && checkoutForm) {
+                checkoutModal.hidden = false;
+                checkoutModal.classList.add("show");
+                document.body.classList.add("checkout-modal-open");
+                checkoutForm.querySelector("input:not([type='hidden'])").focus();
             }
         });
     }
 
-    if (cancelButton && checkoutForm) {
+    if (cancelButton && checkoutModal) {
         cancelButton.addEventListener("click", function() {
-            checkoutForm.classList.remove("show");
+            closeCheckoutModal();
+        });
+    }
+
+    if (checkoutModal) {
+        checkoutModal.addEventListener("click", function(event) {
+            if (event.target === checkoutModal) closeCheckoutModal();
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" && !checkoutModal.hidden) {
+                closeCheckoutModal();
+            }
         });
     }
 
@@ -204,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const cart = getCart();
             if (cart.length === 0) {
                 alert("Giỏ hàng đang trống!");
-                if (checkoutForm) checkoutForm.classList.remove("show");
+                closeCheckoutModal();
                 renderCart();
                 return;
             }
@@ -272,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
 
                     orderForm.reset();
-                    if (checkoutForm) checkoutForm.classList.remove("show");
+                    closeCheckoutModal();
                     renderCart();
                 })
                 .catch(function(error) {

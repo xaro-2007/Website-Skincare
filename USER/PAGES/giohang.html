@@ -108,12 +108,12 @@
             </aside>
         </div>
 
-        <!-- FORM ĐẶT HÀNG (Giữ nguyên class CSS cũ của bạn + thêm thuộc tính name) -->
-        <section id="checkout-form" class="checkout-form">
-            <h2>Thông tin đặt hàng</h2>
-            <p>Vui lòng điền đầy đủ thông tin để chúng tôi giao hàng cho bạn.</p>
+        <div id="checkout-modal" class="checkout-modal" hidden>
+            <section id="checkout-form" class="checkout-form" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+                <h2 id="checkout-title">Thông tin đặt hàng</h2>
+                <p>Vui lòng điền đầy đủ thông tin để chúng tôi giao hàng cho bạn.</p>
 
-            <form id="order-form">
+                <form id="order-form">
                 <div class="form-group">
                     <label for="customer-name">Họ và tên *</label>
                     <input type="text" id="customer-name" name="customer_name" placeholder="Nhập họ và tên" required>
@@ -153,8 +153,9 @@
                         Hủy
                     </button>
                 </div>
-            </form>
-        </section>
+                </form>
+            </section>
+        </div>
     </main>
 
         <footer>
