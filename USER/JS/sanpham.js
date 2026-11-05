@@ -125,36 +125,53 @@ let products = [
     }
 ];
 
-// Đồng bộ sản phẩm từ localStorage (do Admin quản lý) hoặc từ file data/products.json
+// Đọc danh sách từ server; products.json là nguồn dự phòng nếu server API không khả dụng.
+// Đồng bộ sản phẩm từ localStorage do Admin quản lý.
 async function loadProductsData() {
     try {
-        const stored = JSON.parse(localStorage.getItem("julie_products"));
-        if (Array.isArray(stored) && stored.length > 0) {
-            products = stored;
-        }
-    } catch (error) {
-        console.error("Không đọc được julie_products:", error);
-    }
+        // Ưu tiên lấy dữ liệu mới nhất từ Admin.
+        const stored = localStorage.getItem("julie_products");
 
-    if (location.protocol !== "file:") {
-        try {
-            const response = await fetch("../../data/products.json", { cache: "no-store" });
+        if (stored !== null) {
+            const savedProducts = JSON.parse(stored);
+
+            if (Array.isArray(savedProducts)) {
+                products = savedProducts;
+                return;
+            }
+        }
+
+        // Chỉ đọc file JSON khi chưa có dữ liệu trong localStorage.
+        if (location.protocol !== "file:") {
+            const response = await fetch("../../data/products.json", {
+                cache: "no-store"
+            });
+
             if (response.ok) {
                 const fileProducts = await response.json();
-                if (Array.isArray(fileProducts) && fileProducts.length > 0) {
-                    const signature = JSON.stringify(fileProducts);
-                    const savedSignature = localStorage.getItem("julie_products_source");
-                    if (!localStorage.getItem("julie_products") || savedSignature !== signature) {
-                        products = fileProducts;
-                        localStorage.setItem("julie_products", JSON.stringify(fileProducts));
-                        localStorage.setItem("julie_products_source", signature);
-                    }
+
+                if (Array.isArray(fileProducts)) {
+                    products = fileProducts;
+
+                    localStorage.setItem(
+                        "julie_products",
+                        JSON.stringify(fileProducts)
+                    );
                 }
             }
-        } catch (error) {
-            // Dùng dữ liệu có sẵn nếu không fetch được
         }
+    } catch (error) {
+        console.error("Không thể tải dữ liệu sản phẩm:", error);
     }
+}
+
+function escapeHTML(value) {
+    return String(value === null || value === undefined ? "" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 }
 
 const productList = document.getElementById("product-list");
@@ -268,21 +285,21 @@ function renderProducts(productArray) {
         <article class="product-card">
             ${
                 product.badge
-                    ? `<span class="badge ${product.badgeClass || "hot"}">${product.badge}</span>`
+                    ? `<span class="badge ${escapeHTML(product.badgeClass || "hot")}">${escapeHTML(product.badge)}</span>`
                     : ""
             }
-            <div class="product-img-wrap" onclick="openQuickView(${product.id})">
+            <div class="product-img-wrap" onclick="openQuickView(${Number(product.id)})">
                 <img
-                    src="${product.img}"
-                    alt="${product.name}"
+                    src="${escapeHTML(product.img)}"
+                    alt="${escapeHTML(product.name)}"
                     loading="lazy"
                 >
             </div>
             <h4>
-                ${product.name}
+                ${escapeHTML(product.name)}
             </h4>
             <div class="stars">
-                ${product.stars || "★★★★★"} <span>(${product.reviews || 50})</span>
+                ${escapeHTML(product.stars || "★★★★★")} <span>(${escapeHTML(product.reviews || 50)})</span>
             </div>
             <div class="price">
                 <span class="current-price">${formatMoney(product.price)}</span>
@@ -296,14 +313,14 @@ function renderProducts(productArray) {
                 <button
                     type="button"
                     class="btn-quick-view"
-                    onclick="openQuickView(${product.id})"
+                    onclick="openQuickView(${Number(product.id)})"
                 >
                     Xem nhanh
                 </button>
                 <button
                     type="button"
                     class="btn-add-cart add-cart-btn"
-                    data-product-id="${product.id}"
+                    data-product-id="${Number(product.id)}"
                 >
                     Thêm vào giỏ hàng
                 </button>
@@ -333,6 +350,8 @@ function filterProducts() {
 
         const matchesCategory =
             selectedCategory === "all" ||
+            String(product.category || "").toLowerCase() === selectedCategory.toLowerCase() ||
+            String(product.categoryName || "").toLowerCase().includes(selectedCategory.toLowerCase()) ||
             nameLower.includes(selectedCategory.toLowerCase());
 
         let matchesTag = true;
@@ -340,7 +359,9 @@ function filterProducts() {
             const tagKey = activeTag.toLowerCase();
             matchesTag =
                 nameLower.includes(tagKey) ||
-                badgeLower.includes(tagKey);
+                badgeLower.includes(tagKey) ||
+                String(product.category || "").toLowerCase().includes(tagKey) ||
+                String(product.categoryName || "").toLowerCase().includes(tagKey);
         }
 
         return matchesName && matchesCategory && matchesTag;
@@ -433,17 +454,17 @@ function openQuickView(productId) {
 
     modalBodyContent.innerHTML = `
         <div class="modal-img">
-            <img src="${product.img}" alt="${product.name}">
+            <img src="${escapeHTML(product.img)}" alt="${escapeHTML(product.name)}">
         </div>
         <div class="modal-info">
             ${
                 product.badge
-                    ? `<span class="badge ${product.badgeClass || "hot"}">${product.badge}</span>`
+                    ? `<span class="badge ${escapeHTML(product.badgeClass || "hot")}">${escapeHTML(product.badge)}</span>`
                     : ""
             }
-            <h3>${product.name}</h3>
-            <div class="stars">${product.stars || "★★★★★"} <span>(${product.reviews || 50} đánh giá)</span></div>
-            <p class="modal-desc">${product.description || ""}</p>
+            <h3>${escapeHTML(product.name)}</h3>
+            <div class="stars">${escapeHTML(product.stars || "★★★★★")} <span>(${escapeHTML(product.reviews || 50)} đánh giá)</span></div>
+            <p class="modal-desc">${escapeHTML(product.description || "")}</p>
             <div class="price">
                 <span class="current-price">${formatMoney(product.price)}</span>
                 ${
@@ -455,7 +476,7 @@ function openQuickView(productId) {
             <button
                 type="button"
                 class="btn-add-cart modal-add-btn"
-                onclick="addToCart(${product.id}); quickViewModal.hidden = true;"
+                onclick="addToCart(${Number(product.id)}); quickViewModal.hidden = true;"
             >
                 Thêm vào giỏ hàng
             </button>

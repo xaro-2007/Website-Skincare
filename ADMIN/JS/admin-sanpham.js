@@ -149,7 +149,7 @@ async function initProducts() {
     document.getElementById("close-dialog").addEventListener("click", closeDialog);
     document.getElementById("cancel-dialog").addEventListener("click", closeDialog);
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const id = document.getElementById("product-id").value;
@@ -218,7 +218,7 @@ async function initProducts() {
             addActivity('Cập nhật sản phẩm "' + name + '"');
         }
 
-        if (saveProducts(products)) {
+        if (await saveProducts(products)) {
             closeDialog();
             renderTable();
         }
@@ -227,7 +227,7 @@ async function initProducts() {
     searchInput.addEventListener("input", renderTable);
     categoryFilter.addEventListener("change", renderTable);
 
-    tableBody.addEventListener("click", function (event) {
+    tableBody.addEventListener("click", async function (event) {
         const button = event.target.closest("button[data-action]");
 
         if (!button) {
@@ -258,7 +258,7 @@ async function initProducts() {
             return String(item.id) !== String(id);
         });
 
-        if (saveProducts(remaining)) {
+        if (await saveProducts(remaining)) {
             addActivity('Xóa sản phẩm "' + product.name + '"');
             renderTable();
         }

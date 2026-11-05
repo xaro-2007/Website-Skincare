@@ -11,6 +11,9 @@ const CATEGORY_NAMES = {
     son: "Son môi",
     cushion: "Phấn nước",
     cleanser: "Sữa rửa mặt",
+    taytrang: "Nước tẩy trang",
+    kemlot: "Kem lót",
+    primer: "Kem lót",
     toner: "Toner",
     serum: "Serum",
     moisturizer: "Kem dưỡng",
@@ -102,8 +105,7 @@ function resolveAdminImage(imgPath) {
     return imgPath;
 }
 
-// Nạp dữ liệu từ JSON vào localStorage.
-// Nếu file data/products.json thay đổi so với lần trước thì tự động cập nhật mới!
+// Nạp sản phẩm từ API, dùng products.json chỉ khi API chưa sẵn sàng.
 async function prepareAdminData() {
     const fileProducts = await fetchJSON("products.json");
     const sourceProducts = Array.isArray(fileProducts) ? fileProducts : DEFAULT_PRODUCTS;
@@ -111,11 +113,15 @@ async function prepareAdminData() {
     const sourceSignature = JSON.stringify(normalized);
     const savedSignature = localStorage.getItem(PRODUCTS_SOURCE_KEY);
 
-    if (readStorage(PRODUCTS_KEY, null) === null || savedSignature !== sourceSignature) {
+    // if (readStorage(PRODUCTS_KEY, null) === null || savedSignature !== sourceSignature) {
+    //     saveStorage(PRODUCTS_KEY, normalized);
+    //     localStorage.setItem(PRODUCTS_SOURCE_KEY, sourceSignature);
+    // }
+
+    if (readStorage(PRODUCTS_KEY, null) === null) {
         saveStorage(PRODUCTS_KEY, normalized);
         localStorage.setItem(PRODUCTS_SOURCE_KEY, sourceSignature);
     }
-
     if (readStorage(USERS_KEY, null) === null) {
         const users = await fetchJSON("users.json");
 
